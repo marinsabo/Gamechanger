@@ -1,0 +1,196 @@
+.about {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.about .hero-box {
+  padding-block: 5rem;
+}
+.naslov {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 10rem;
+}
+.naslov h1 {
+  color: white;
+  text-shadow: 2px 2px #d92525;
+  font-size: 4rem;
+}
+@media (max-width: 850px) {
+  .naslov h1 {
+    font-size: 2.5rem;
+  }
+}
+.element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  text-align: start;
+  margin-inline: 1rem;
+  border-radius: 15px;
+  box-shadow: -5px 5px 0px #d92525;
+  border: 1px solid #d92525;
+  color: white;
+  font-size: 1.5rem;
+  padding-block: 2rem;
+  margin-block: 2rem;
+}
+.descrip-tekst .element h1 {
+  color: white;
+  font-size: 2rem;
+  text-shadow: 4px 2px #d92525;
+  text-align: center;
+}
+.element p {
+  width: 80%;
+  color: white;
+  margin-block: 0.5rem;
+  font-size: 1.2rem;
+}
+@media (max-width: 850px) {
+  .elements {
+    flex-direction: column;
+  }
+  .element {
+    width: 80%;
+    margin-block: 2rem;
+  }
+}
+
+/* INFO */
+.informacije {
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  align-items: center;
+  justify-content: center;
+  margin-block: 5rem;
+}
+.informacije h1 {
+  font-size: 1.8rem;
+  align-self: flex-start;
+  width: 85%;
+  margin-bottom: 2em;
+  margin-inline: auto;
+  text-align: center;
+  color: #fff;
+}
+.icons {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+.icons h3 {
+  color: white;
+  font-size: 1.5rem;
+}
+.icons p {
+  color: white;
+  text-align: start;
+  width: 90%;
+  margin-block: 1rem;
+}
+.icon {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  align-items: center;
+  justify-content: center;
+}
+.icon img {
+  width: 40%;
+  animation: pulse 1s linear infinite;
+}
+@media (max-width: 850px) {
+  .icons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .info h1 {
+    text-align: center;
+  }
+  .icon {
+    width: 100%;
+    margin-block: 1rem;
+  }
+  .icons p {
+    text-align: center;
+    width: 100%;
+  }
+  .icon h3 {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* DESCRIP */
+.descrip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.descrip-box {
+  display: flex;
+  width: 85%;
+  margin-block: 4rem;
+  align-items: center;
+  justify-content: start;
+}
+.descrip-tekst {
+  width: 60%;
+  color: white;
+  text-align: start;
+}
+.descrip-tekst h3 {
+  margin-block: 2rem;
+}
+.descrip-tekst h1 {
+  font-size: 1.8rem;
+  text-align: start;
+  width: 75%;
+}
+.descrip-tekst p {
+  margin-block: 2rem;
+  font-size: 1.2rem;
+  width: 60%;
+  text-align: start;
+}
+.descrip-slika {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.descrip-slika img {
+  width: 50%;
+}
+@media (max-width: 850px) {
+  .descrip-box {
+    flex-direction: column;
+  }
+  .descrip-slika {
+    width: 100%;
+  }
+  .descrip-slika img {
+    width: 100%;
+  }
+  .descrip-tekst {
+    width: 100%;
+  }
+  .descrip-tekst h1 {
+    width: 90%;
+  }
+  .descrip-tekst p {
+    width: 100%;
+  }
+  #pc {
+    display: none;
+  }
+}
