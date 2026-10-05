@@ -1,0 +1,1132 @@
+{
+  "date": {
+    "hr": "Četvrtak / 12.10.2023.",
+    "en": "Thursday / 12.10.2023."
+  },
+  "halls": [
+    {
+      "number": "4",
+      "name": {
+        "hr": "LOVE STORY / WEB3, AI & GAMING",
+        "en": "LOVE STORY / WEB3, AI & GAMING"
+      },
+      "short": "Love Story",
+      "partner": "cola.webp",
+      "hosts": [
+        {
+          "name": "Tomislav Pancirov",
+          "id": "tomislav-pancirov"
+        }
+      ],
+      "sessions": [
+        {
+          "start": "09:30",
+          "end": "09:55",
+          "title": {
+            "hr": "Data discovery: Uncovering insights & best practices",
+            "en": "Data discovery: Uncovering insights & best practices"
+          },
+          "partner": "crowe.webp",
+          "speakers": [
+            {
+              "name": "Dubravka Lacković Smole",
+              "id": "dubravka-lackovic-smole"
+            },
+            {
+              "name": "Sandro Mur",
+              "id": "sandro-mur"
+            }
+          ]
+        },
+        {
+          "start": "10:00",
+          "end": "10:45",
+          "title": {
+            "hr": "Interakcija - VR & AR rješenja u gaming okruženju",
+            "en": "Interaction - VR & AR solutions in gaming environment"
+          },
+          "partner": "garden.webp",
+          "speakers": [
+            {
+              "name": "Igor Belan",
+              "id": "igor-belan"
+            },
+            {
+              "name": "Nika Dvoravić",
+              "id": "nika-dvoravic"
+            },
+            {
+              "name": "Daniel Pikl",
+              "id": "daniel-pikl"
+            },
+            {
+              "name": "Lovro Nola",
+              "id": "lovro-nola"
+            }
+          ]
+        },
+        {
+          "start": "10:50",
+          "end": "11:35",
+          "title": {
+            "hr": "Hoće li nam 2024. donijeti cross platform gaming / Je li industrija spremna?",
+            "en": "Will 2024 bring us cross-platform gaming / Is the industry ready?"
+          },
+          "speakers": [
+            {
+              "name": "Aleksandar Gavrilović",
+              "id": "aleksandar-gavrilovic"
+            },
+            {
+              "name": "Danijel Radulović",
+              "id": "danijel-radulovic"
+            },
+            {
+              "name": "Filip Jovanović",
+              "id": "filip-jovanovic"
+            },
+            {
+              "name": "Vladimir Šimović",
+              "id": "vladimir-simovic"
+            }
+          ]
+        },
+        {
+          "start": "11:35",
+          "end": "11:50",
+          "title": {
+            "hr": "Coffee break by DeLonghi",
+            "en": "Coffee break by DeLonghi"
+          },
+          "partner": "delonghi.webp"
+        },
+        {
+          "start": "11:50",
+          "end": "12:35",
+          "title": {
+            "hr": "AI or Black Mirror / Jesmo li sigurni? Koliko dugo?",
+            "en": "AI or Black Mirror / Are we sure? How long?"
+          },
+          "speakers": [
+            {
+              "name": "Hajdi Cenan",
+              "id": "hajdi-cenan"
+            },
+            {
+              "name": "Dr. Vanja Ljevar",
+              "id": "vanja-ljevar"
+            },
+            {
+              "name": "Petar Atanasovski",
+              "id": "petar-atanasovski"
+            },
+            {
+              "name": "Damjan Raknić",
+              "id": "damjan-raknic"
+            }
+          ]
+        },
+        {
+          "start": "12:40",
+          "end": "13:25",
+          "title": {
+            "hr": "Kripto is dead - long live crypto / Kako izgleda oporavak? Zašto još uvijek vjerujemo?",
+            "en": "Crypto is dead - long live crypto / What does recovery look like? Why do we still believe?"
+          },
+          "partner": "revuto.webp",
+          "speakers": [
+            {
+              "name": "Ida Pandur",
+              "id": "ida-pandur"
+            },
+            {
+              "name": "Vedran Vukman",
+              "id": "vedran-vukman"
+            },
+            {
+              "name": "Lejla Muratcaus Blagojevic",
+              "id": "lejla-muratcaus-blagojevic"
+            },
+            {
+              "name": "Strahinja Vukoičić",
+              "id": "strahinja-vukoicic"
+            }
+          ]
+        },
+        {
+          "start": "13:25",
+          "end": "14:25",
+          "title": {
+            "hr": "Big break",
+            "en": "Big break"
+          },
+          "partner": "garden.webp"
+        },
+        {
+          "start": "14:25",
+          "end": "15:10",
+          "title": {
+            "hr": "Blockchain & NFT - based gaming / Igraj i zaradi u fokusu",
+            "en": "Blockchain & NFT - based gaming / Play and earn in focus"
+          },
+          "speakers": [
+            {
+              "name": "Jovan Tišma",
+              "id": "jovan-tisma"
+            },
+            {
+              "name": "Tin Šarić",
+              "id": "tin-saric"
+            },
+            {
+              "name": "Stipe Plejić",
+              "id": "stipe-plejic"
+            },
+            {
+              "name": "Ivor \"Voshy\" Ivošević",
+              "id": "ivor-ivosevic"
+            }
+          ]
+        },
+        {
+          "start": "15:15",
+          "end": "16:00",
+          "title": {
+            "hr": "He for she / Postoji li ravnopravnost spolova u Web3 i gaming svijetu?",
+            "en": "He for she / Is there gender equality in the Web3 and gaming world?"
+          },
+          "partner": "philips.webp",
+          "speakers": [
+            {
+              "name": "Nemanja Petrović",
+              "id": "nemanja-petrovic"
+            },
+            {
+              "name": "Belma Gutlić",
+              "id": "belma-gutlic"
+            },
+            {
+              "name": "Lucija Pilić",
+              "id": "lucija-pilic"
+            }
+          ]
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "title": {
+            "hr": "Change the beat party by PPD",
+            "en": "Change the beat party by PPD"
+          },
+          "partner": "tanqueray.webp"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "name": {
+        "hr": "FAST TRAIN - GAMING & GAMIFICATION",
+        "en": "FAST TRAIN - GAMING & GAMIFICATION"
+      },
+      "short": "Fast Train",
+      "partner": "samsung.webp",
+      "hosts": [
+        {
+          "name": "Sanda Mamić",
+          "id": "sanda-mamic"
+        }
+      ],
+      "sessions": [
+        {
+          "start": "10:00",
+          "end": "10:45",
+          "title": {
+            "hr": "Eco gamification / Može li gaming filozofija spasiti planet?",
+            "en": "Eco gamification / Can gaming philosophy save the planet?"
+          },
+          "speakers": [
+            {
+              "name": "Ivan Jelušić",
+              "id": "ivan-jelusic"
+            },
+            {
+              "name": "Marko Stojaković",
+              "id": "marko-stojakovic"
+            },
+            {
+              "name": "Ante Medić",
+              "id": "ante-medic"
+            }
+          ]
+        },
+        {
+          "start": "10:50",
+          "end": "11:35",
+          "title": {
+            "hr": "Gamification of employee onboarding / Nova dimenzija ljudskih resursa",
+            "en": "Gamification of employee onboarding / A new dimension of human resources"
+          },
+          "partner": "joberty.webp",
+          "speakers": [
+            {
+              "name": "Djordje Vukotić",
+              "id": "djordje-vukotic"
+            },
+            {
+              "name": "Izabela Vrtar",
+              "id": "izabela-vrtar"
+            },
+            {
+              "name": "Andrea Ćulafić",
+              "id": "andrea-culafic"
+            },
+            {
+              "name": "Sanja Nonković",
+              "id": "sanja-nonkovic"
+            }
+          ]
+        },
+        {
+          "start": "11:35",
+          "end": "11:50",
+          "title": {
+            "hr": "Coffee break by DeLonghi",
+            "en": "Coffee break by DeLonghi"
+          },
+          "partner": "delonghi.webp"
+        },
+        {
+          "start": "11:50",
+          "end": "12:35",
+          "title": {
+            "hr": "Pad reklamne industrije / Rast reklamne industrije / AI preuzima kreativnost? U kojem smjeru se krećemo?",
+            "en": "Decline of the advertising industry / Growth of the advertising industry / Is AI taking over creativity? In which direction are we moving?"
+          },
+          "speakers": [
+            {
+              "name": "Vjeko Srednoselec",
+              "id": "vjeko-srednoselec"
+            },
+            {
+              "name": "Saša Spasić",
+              "id": "sasa-spasic"
+            },
+            {
+              "name": "Valentina Golub",
+              "id": "valentina-golub"
+            },
+            {
+              "name": "Davor Bruketa",
+              "id": "davor-bruketa"
+            }
+          ]
+        },
+        {
+          "start": "12:40",
+          "end": "13:25",
+          "title": {
+            "hr": "Gaming dizajn i animacija trajno preoblikuju svijet - novi impact AI",
+            "en": "Gaming design and animation permanently changing the world - the new impact of AI"
+          },
+          "speakers": [
+            {
+              "name": "Mario Dumić",
+              "id": "mario-dumic"
+            },
+            {
+              "name": "Boris Barbir",
+              "id": "boris-barbir"
+            },
+            {
+              "name": "Bogdan Amidžić",
+              "id": "bogdan-amidzic"
+            },
+            {
+              "name": "Ilija Petrušić",
+              "id": "ilija-petrusic"
+            }
+          ]
+        },
+        {
+          "start": "13:25",
+          "end": "14:25",
+          "title": {
+            "hr": "Big break",
+            "en": "Big break"
+          },
+          "partner": "garden.webp"
+        },
+        {
+          "start": "14:25",
+          "end": "15:10",
+          "title": {
+            "hr": "Ostaje li sport bez publike? Nova borba je za eSport pozornost ili nije!",
+            "en": "Does sport remain without an audience? The new fight is for eSports attention or not!"
+          },
+          "partner": "hr-lutrija.webp",
+          "speakers": [
+            {
+              "name": "Alen Žlimen",
+              "id": "alen-zlimen"
+            },
+            {
+              "name": "Luka Škrinjarić",
+              "id": "luka-skrinjaric"
+            },
+            {
+              "name": "Enis Papić",
+              "id": "enis-papic"
+            },
+            {
+              "name": "Gordan Giriček",
+              "id": "gordan-giricek"
+            }
+          ]
+        },
+        {
+          "start": "15:15",
+          "end": "16:00",
+          "title": {
+            "hr": "Gamify u aplikacijama / Znamo li trendove?",
+            "en": "Gamify in applications / Do we know the trends?"
+          },
+          "partner": "rit.webp",
+          "speakers": [
+            {
+              "name": "Prof. dr. sc. Martin Žagar",
+              "id": "martin-zagar"
+            },
+            {
+              "name": "Mislav Combaj",
+              "id": "mislav-combaj"
+            },
+            {
+              "name": "Fedja Gavrilović",
+              "id": "fedja-gavrilovic"
+            },
+            {
+              "name": "Josipa Borić-Novosel",
+              "id": "josipa-boric-novosel"
+            }
+          ]
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "title": {
+            "hr": "Change the beat party by PPD",
+            "en": "Change the beat party by PPD"
+          },
+          "partner": "tanqueray.webp"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "name": {
+        "hr": "GOOD GAMES OF ECOMMERCE",
+        "en": "GOOD GAMES OF ECOMMERCE"
+      },
+      "short": "Good Games",
+      "partner": "adiko.webp",
+      "hosts": [
+        {
+          "name": "Dino Oreški",
+          "id": "dino-oreski"
+        }
+      ],
+      "sessions": [
+        {
+          "start": "10:00",
+          "end": "10:45",
+          "title": {
+            "hr": "AR, AI & e-retail / New user experience for online shoppers",
+            "en": "AR, AI & e-retail / New user experience for online shoppers"
+          },
+          "speakers": [
+            {
+              "name": "Petra Bašić Jantolić",
+              "id": "petra-basic-jantolic"
+            },
+            {
+              "name": "Ranko Gajanović",
+              "id": "ranko-gajanovic"
+            },
+            {
+              "name": "Vedrana Lončar",
+              "id": "vedrana-loncar"
+            }
+          ]
+        },
+        {
+          "start": "10:45",
+          "end": "11:00",
+          "title": {
+            "hr": "Coffee break by DeLonghi",
+            "en": "Coffee break by DeLonghi"
+          },
+          "partner": "delonghi.webp"
+        },
+        {
+          "start": "11:00",
+          "end": "11:45",
+          "title": {
+            "hr": "Fitness & healthy habits / Kako ih uvesti u platformu? All is just a game!",
+            "en": "Fitness & healthy habits / How to introduce them in a platform? All is just a game!"
+          },
+          "partner": "herbalife.webp",
+          "speakers": [
+            {
+              "name": "Marino Bašić",
+              "id": "marino-basic"
+            },
+            {
+              "name": "Roko Marović",
+              "id": "roko-marovic"
+            }
+          ]
+        },
+        {
+          "start": "11:50",
+          "end": "12:35",
+          "title": {
+            "hr": "Build a future / Can Web3, gaming and e-commerce be one story?",
+            "en": "Build a future / Can Web3, gaming and e-commerce be one story?"
+          },
+          "speakers": [
+            {
+              "name": "Kristijan Škarica",
+              "id": "kristijan-skarica"
+            },
+            {
+              "name": "Krešimir Končić",
+              "id": "kresimir-koncic"
+            },
+            {
+              "name": "Darijan Kosić",
+              "id": "darijan-kosic"
+            }
+          ]
+        },
+        {
+          "start": "12:35",
+          "end": "13:35",
+          "title": {
+            "hr": "Big break",
+            "en": "Big break"
+          },
+          "partner": "garden.webp"
+        },
+        {
+          "start": "13:35",
+          "end": "14:20",
+          "title": {
+            "hr": "Metaverse i E-trgovina. Godinu kasnije - projekt u nastajanju ili nestajanju?",
+            "en": "Metaverse and e-commerce. A year later - emerging or disappearing?"
+          },
+          "partner": "laqo.webp",
+          "speakers": [
+            {
+              "name": "Tadej Slapnik",
+              "id": "tadej-slapnik"
+            },
+            {
+              "name": "Ivanka Mabić Gagić",
+              "id": "ivanka-mabic-gagic"
+            },
+            {
+              "name": "Ilija Brajković",
+              "id": "ilija-brajkovic"
+            },
+            {
+              "name": "Dubravka Srkulj",
+              "id": "dubravka-srkulj"
+            }
+          ]
+        },
+        {
+          "start": "14:25",
+          "end": "15:10",
+          "title": {
+            "hr": "NFT fashion global hype / Moda u pikselu je stigla. Koje nam nove mogućnosti donosi Web3?",
+            "en": "NFT fashion global hype / Fashion in pixels has arrived. What new opportunities does Web3 bring?"
+          },
+          "speakers": [
+            {
+              "name": "Vedrana Čarapović Propadalo",
+              "id": "vedrana-carapovic-propadalo"
+            },
+            {
+              "name": "Ivana Mišković",
+              "id": "ivana-miskovic"
+            },
+            {
+              "name": "Martina Čičko Karapetri",
+              "id": "martina-cicko-karapetric-morana-tomasevic"
+            },
+            {
+              "name": "Morana Tomašević",
+              "id": "martina-cicko-karapetric-morana-tomasevic"
+            }
+          ]
+        },
+        {
+          "start": "15:15",
+          "end": "16:00",
+          "title": {
+            "hr": "Smart housekeeping in the age of AI / E-trgovina, smart house i dolazak umjetne inteligencije",
+            "en": "Smart housekeeping in the age of AI / E-commerce, smart house and the arrival of artificial intelligence"
+          },
+          "speakers": [
+            {
+              "name": "Aron Stanić",
+              "id": "aron-stanic"
+            },
+            {
+              "name": "Marcel Majsan",
+              "id": "marcel-majsan"
+            },
+            {
+              "name": "Jan Štedul",
+              "id": "jan-stedul"
+            },
+            {
+              "name": "Ivan Dovhanj",
+              "id": "ivan-dovhanj"
+            }
+          ]
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "title": {
+            "hr": "Change the beat party by PPD",
+            "en": "Change the beat party by PPD"
+          },
+          "partner": "tanqueray.webp"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "name": {
+        "hr": "BSAFE-CYBERSECURITY, SAFE CLOUD & CYBERBULLYING",
+        "en": "BSAFE-CYBERSECURITY, SAFE CLOUD & CYBERBULLYING"
+      },
+      "short": "BSafe",
+      "partner": "eu-komisija.webp",
+      "hosts": [
+        {
+          "name": "Duje Stojak",
+          "id": "duje-stojak"
+        }
+      ],
+      "sessions": [
+        {
+          "start": "09:30",
+          "end": "09:55",
+          "title": {
+            "hr": "Opening presentations",
+            "en": "Opening presentations"
+          },
+          "partner": "eu-komisija.webp",
+          "speakers": [
+            {
+              "name": "BARCELLAN Roberto",
+              "id": "roberto-barcellan"
+            }
+          ]
+        },
+        {
+          "start": "10:00",
+          "end": "10:45",
+          "title": {
+            "hr": "Za Amber Alert u Hrvatskoj - došlo je vrijeme",
+            "en": "For an Amber Alert in Croatia - the time has come"
+          },
+          "speakers": [
+            {
+              "name": "Tomislav Ramljak",
+              "id": "tomislav-ramljak"
+            },
+            {
+              "name": "Dr. sc. Ana Havelka Meštrović",
+              "id": "ana-havelka-mestrovic"
+            },
+            {
+              "name": "Vlaho Hrdalo",
+              "id": "vlaho-hrdalo"
+            }
+          ]
+        },
+        {
+          "start": "10:45",
+          "end": "11:00",
+          "title": {
+            "hr": "Coffee break by DeLonghi",
+            "en": "Coffee break by DeLonghi"
+          },
+          "partner": "delonghi.webp"
+        },
+        {
+          "start": "11:00",
+          "end": "11:45",
+          "title": {
+            "hr": "Optimizacija nadzornih alata / Kibernetička sigurnost - idemo li prema platformskim rješenjima?",
+            "en": "Optimization of surveillance tools / Cybersecurity - are we going towards platform solutions?"
+          },
+          "speakers": [
+            {
+              "name": "Dr. sc. Dražen Lučić",
+              "id": "drazen-lucic"
+            },
+            {
+              "name": "Tomislav Vuk",
+              "id": "tomislav-vuk"
+            },
+            {
+              "name": "Dr. sc. Mario Weber",
+              "id": "mario-weber"
+            },
+            {
+              "name": "Mario Šegina",
+              "id": "mario-segina"
+            }
+          ]
+        },
+        {
+          "start": "11:50",
+          "end": "12:35",
+          "title": {
+            "hr": "5 GDPR godina - koliko je podigao razinu privatnosti?",
+            "en": "5 years of GDPR - how much has it raised the level of privacy?"
+          },
+          "speakers": [
+            {
+              "name": "Nandino Lončar",
+              "id": "nandino-loncar"
+            },
+            {
+              "name": "Ivan Sabljić",
+              "id": "ivan-sabljic"
+            },
+            {
+              "name": "Martina Šepić",
+              "id": "martina-sepic"
+            }
+          ]
+        },
+        {
+          "start": "12:35",
+          "end": "13:35",
+          "title": {
+            "hr": "Big break",
+            "en": "Big break"
+          },
+          "partner": "garden.webp"
+        },
+        {
+          "start": "13:35",
+          "end": "14:20",
+          "title": {
+            "hr": "Cyberbullying / Kako nam AI može pomoći?",
+            "en": "Cyberbullying / How can AI help us?"
+          },
+          "speakers": [
+            {
+              "name": "Monika Pejić",
+              "id": "monika-pejic"
+            },
+            {
+              "name": "Marijana Šarolić Robić",
+              "id": "marijana-sarolic-robic"
+            },
+            {
+              "name": "Doc. dr. sc. Lana Ciboci Perša",
+              "id": "lana-ciboci-persa"
+            }
+          ]
+        },
+        {
+          "start": "14:25",
+          "end": "15:10",
+          "title": {
+            "hr": "AI and its impact on the cyber security landscape.",
+            "en": "AI and its impact on the cyber security landscape."
+          },
+          "partner": "schneiderelectric.webp",
+          "speakers": [
+            {
+              "name": "Martina Silov",
+              "id": "martina-silov"
+            },
+            {
+              "name": "Jagor Čakmak",
+              "id": "jagor-cakmak"
+            },
+            {
+              "name": "Marko Gulan",
+              "id": "marko-gulan"
+            }
+          ]
+        },
+        {
+          "start": "15:15",
+          "end": "16:00",
+          "title": {
+            "hr": "Online zlostavljanje / Opasnost je na mrežama - vrijeme je za djelovanje!",
+            "en": "Online abuse / The danger is online - time to act!"
+          },
+          "partner": "podravka.webp",
+          "speakers": [
+            {
+              "name": "Igor Šabarić",
+              "id": "igor-sabaric"
+            },
+            {
+              "name": "Vesna Katalinić",
+              "id": "vesna-katalinic"
+            },
+            {
+              "name": "Lorin Nukić",
+              "id": "lorin-nukic"
+            }
+          ]
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "title": {
+            "hr": "Change the beat party by PPD",
+            "en": "Change the beat party by PPD"
+          },
+          "partner": "tanqueray.webp"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "name": {
+        "hr": "INNOVATE XCELLENCE – STARTUP STAGE",
+        "en": "INNOVATE XCELLENCE – STARTUP STAGE"
+      },
+      "short": "Startup Stage",
+      "partner": null,
+      "hosts": [
+        {
+          "name": "Izabela Vrtar",
+          "id": "izabela-vrtar"
+        },
+        {
+          "name": "Nika Matičić",
+          "id": "nika-maticic"
+        }
+      ],
+      "sessions": [
+        {
+          "start": "10:00",
+          "end": "10:45",
+          "title": {
+            "hr": "Get Up & GROW!",
+            "en": "Get Up & GROW!"
+          },
+          "tag": {
+            "hr": "Fresh morning special!",
+            "en": "Fresh morning special!"
+          },
+          "speakers": [
+            {
+              "name": "Ivana Barišić",
+              "id": "ivana-barisic"
+            },
+            {
+              "name": "Ana-Marija Jagodić Rukavina",
+              "id": "ana-marija-jagodic-rukavina"
+            },
+            {
+              "name": "Tomislav Krajačić",
+              "id": "tomislav-krajacic"
+            }
+          ],
+          "pitch": 7
+        },
+        {
+          "start": "10:50",
+          "end": "11:35",
+          "title": {
+            "hr": "Zuluhood",
+            "en": "Zuluhood"
+          },
+          "tag": {
+            "hr": "InnovateXcellence start-up / Premiere",
+            "en": "InnovateXcellence start-up / Premiere"
+          },
+          "speakers": [
+            {
+              "name": "Maja Krejči",
+              "id": "maja-krejci"
+            }
+          ],
+          "pitch": 6
+        },
+        {
+          "start": "11:35",
+          "end": "11:50",
+          "title": {
+            "hr": "Coffee break by DeLonghi",
+            "en": "Coffee break by DeLonghi"
+          },
+          "partner": "delonghi.webp"
+        },
+        {
+          "start": "11:50",
+          "end": "12:25",
+          "title": {
+            "hr": "Bikademy",
+            "en": "Bikademy"
+          },
+          "tag": {
+            "hr": "InnovateXcellence start-up / Premiere",
+            "en": "InnovateXcellence start-up / Premiere"
+          },
+          "speakers": [
+            {
+              "name": "Krešimir Herceg",
+              "id": "kresimir-herceg"
+            }
+          ],
+          "pitch": 5
+        },
+        {
+          "start": "12:30",
+          "end": "13:05",
+          "title": {
+            "hr": "Flaster",
+            "en": "Flaster"
+          },
+          "tag": {
+            "hr": "InnovateXcellence start-up / Premiere",
+            "en": "InnovateXcellence start-up / Premiere"
+          },
+          "speakers": [
+            {
+              "name": "Luka Glavaš",
+              "id": "luka-glavas"
+            }
+          ],
+          "pitch": 4
+        },
+        {
+          "start": "13:05",
+          "end": "14:00",
+          "title": {
+            "hr": "Big break",
+            "en": "Big break"
+          },
+          "partner": "garden.webp"
+        },
+        {
+          "start": "14:00",
+          "end": "14:35",
+          "title": {
+            "hr": "Uptown Records",
+            "en": "Uptown Records"
+          },
+          "tag": {
+            "hr": "InnovateXcellence start-up / Premiere",
+            "en": "InnovateXcellence start-up / Premiere"
+          },
+          "speakers": [
+            {
+              "name": "Niko Nobilo",
+              "id": "niko-nobilo"
+            }
+          ],
+          "pitch": 3
+        },
+        {
+          "start": "14:40",
+          "end": "15:15",
+          "title": {
+            "hr": "Choncha",
+            "en": "Choncha"
+          },
+          "tag": {
+            "hr": "InnovateXcellence start-up / Premiere",
+            "en": "InnovateXcellence start-up / Premiere"
+          },
+          "speakers": [
+            {
+              "name": "Frano Primorac",
+              "id": "frano-primorac"
+            }
+          ],
+          "pitch": 2
+        },
+        {
+          "start": "15:20",
+          "end": "15:55",
+          "title": {
+            "hr": "Native Team",
+            "en": "Native Team"
+          },
+          "tag": {
+            "hr": "InnovateXcellence start-up / Premiere",
+            "en": "InnovateXcellence start-up / Premiere"
+          },
+          "speakers": [
+            {
+              "name": "Timothei Jukić",
+              "id": "timothei-jukic"
+            }
+          ],
+          "pitch": 1
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "title": {
+            "hr": "Change the beat party by PPD",
+            "en": "Change the beat party by PPD"
+          }
+        }
+      ],
+      "jury": [
+        {
+          "name": "Reno Budić",
+          "id": "reno-budic"
+        },
+        {
+          "name": "Ivona Atanasov Bandić",
+          "id": "ivona-atanasov-bandic"
+        },
+        {
+          "name": "Katarina Ćosić",
+          "id": "katarina-cosic"
+        },
+        {
+          "name": "Bernard Ivezić",
+          "id": "bernard-ivezic"
+        },
+        {
+          "name": "Dario Marčac",
+          "id": "dario-marcac"
+        },
+        {
+          "name": "Filip Duvnjak",
+          "id": null
+        },
+        {
+          "name": "Ivan Ormuž",
+          "id": "ivan-ormuz"
+        }
+      ]
+    }
+  ],
+  "pitches": {
+    "1": {
+      "name": "NATIVE TEAM",
+      "url": "https://nativeteams.com/",
+      "text": {
+        "hr": [
+          "Zahvaljujući Native Teams platformi, 'freelance' radnici imaju mogućnost da ostvare sve benefite onih koji su zaposleni 'za stalno', online ili putem mobilne aplikacije.",
+          "Platforma Native Teams omogućava legalno zaposlenje, fleksibilne metode plaćanja i globalnu mobilnost svim ‘freelance’ radnicima ali i poslodavcima čiji su timovi zaposleni remote’.",
+          "Korisnici platforme imaju priliku da nesmetano posluju s poslodavcima i klijentima širom sveta, a da pri tome ne brinu o svom statusu zaposlenja. Platforma na jednom mestu objedinjuje poreze, troškove socijalnog i zdravstvenog osiguranja, i ostalne radne benefite.",
+          "Uz to, oni imaju i pristup digitalnom novčaniku (Native Teams Wallet) preko kojeg mogu da upravljaju svim uplatma i isplatama u lokalnoj valuti, Native Teams ATM kartici, ali i lak pristup"
+        ],
+        "en": [
+          "thanks to the Native Teams platform, 'freelance' workers they have the possibility to realize all the benefits of those who are employed 'permanently', online or through a mobile application.",
+          "The Native Teams platform enables legal, flexible employment payment methods and global mobility to all 'freelance' workers but and employers whose teams are employed remotely'.",
+          "Users of the platform they have the opportunity to do business smoothly with employers and clients around the world, without worrying about their employment status. Platform on it combines taxes, social and health expenses in one place insurance, and other work benefits.",
+          "In addition, they also have access to a digital wallet (Native Teams Wallet) through which they can manage all payments and withdrawals in local currency, Native Teams ATM card, but also easy access"
+        ]
+      }
+    },
+    "2": {
+      "name": "CHONCHA",
+      "url": "www.choncha.eu",
+      "text": {
+        "hr": [
+          "Vjerujemo da bi vrtlarstvo i briga o biljkama trebali biti radosno i ispunjavajuće iskustvo, ali također razumijemo da može biti izazov pratiti njegu koja je biljkama potrebna.",
+          "Naša pametna posuda za biljke rješava ovaj problem automatiziranjem zalijevanja i praćenjem svih važnih životnih uvjeta, koristeći ugrađene senzore za praćenje vlažnosti tla, vlažnosti zraka, temperature i razine osvjetljenja. I sve to aktivacijom aplikacije."
+        ],
+        "en": [
+          "We believe that gardening and caring for plants should be joyful and fulfilling experience, but we also understand that it can be challenging monitor the care that the plants need.",
+          "Our smart plant pot solves this problem by automating it watering and monitoring all important living conditions, using built-in sensors for monitoring soil moisture, air humidity, temperature and light levels. And all this by activating the application."
+        ]
+      }
+    },
+    "3": {
+      "name": "UPTOWN RECORDS",
+      "url": "https://uptownrecords.eu",
+      "text": {
+        "hr": [
+          "NFT je kratica koja je zaludjela svijet u vremenu pandemije. Akronim često krivo protumačen za brzu zaradu upitnog procesa. U glazbi je eksplodirao kao koncept s američkim producentima Steveom Aokijem, Timbalandom i 3Lauom koji su preko noći od svoje glazbe zaradili desetke milijune dolara, a vrijednost joj je progresivno rasla i to bez posredstva između njega i obožavateljâ. Na taj je vlak uskočilo nebrojeno mnogo suvremenih izvođača te publici ponudilo dodatnu vrijednost na iskustvo slušanja.",
+          "U Hrvatskoj su pioniri trap kolektiv KUKU$ koji su obilježili deset godina djelovanja prvom hrvatskom NFT verzijom albuma The Lost Files s deset neobjavljenih pjesama te ostavili pečat na domaćoj glazbenoj sceni uz tokenizirani potpis Uptown Recordsa.",
+          "Četvorica mladih glazbenika i techovaca opisuju Uptown Records kao nezavisnu diskografsku kuću s fokusom na implementaciju blockchain tehnologije u glazbu. Počeli su kao tradicionalni diskografi, ali su shvatili da žele pružiti nešto drugačije i suvremenije. U timu, Sven Hamzić bavi se komunikacijom i odnosima s javnošću. Među četvorkom dva su Tina: Šarić i Galetović su u timu posvećeni blockchain tehnologiji i njezinoj implementaciji, dok je Niko Nobilo onaj koji brine za produkciju i kreativni aspekt izdavača. Uptown je rezultat spajanja njihove strasti prema glazbi i njihova znanja o blockchainu i NFT-jevima zbog kojih smo, na tragu našeg interesa za mogućnosti NFT-jeva u glazbi, sjeli u njihov ured i porazgovarali o smislu, besmislu, mogućnostima i predrasudama u svijetu mistične kratice."
+        ],
+        "en": [
+          "NFT is an acronym that has taken the world by storm during the pandemic. Acronym often misinterpreted for the quick profit of the questionable process. It's in the music exploded as a concept with American producers Steve Aoki, Timbaland and 3Lau who made money overnight from their music tens of millions of dollars, and its value grew progressively as well without mediation between him and the fans. It jumped on that train countless contemporary performers and offered the audience an additional value on the listening experience.",
+          "The pioneers in Croatia are the trap collective KUKU$, who marked ten year of activity with the first Croatian NFT version of the album The Lost Files with ten unreleased songs and left a mark on the domestic music scene scene with the tokenized signature of Uptown Records.",
+          "Four young musicians and tech guys describe Uptown Records as an independent record label with a focus on blockchain implementation technology into music. They started out as traditional record labels, but they are realized that they wanted to provide something different and more contemporary. On the team, Sven Hamzić deals with communication and public relations. Among the four there are two Tina: Šarić and Galetović in the team dedicated to blockchain technology and its implementation, while Niko Nobilo is the one who takes care of the production and creative aspect of the publisher. Uptown is the result combining their passion for music and their knowledge of blockchain and NFTs, for which we are on the trail of our interest in the possibilities of NFTs in music, sat down in their office and talked about meaning, nonsense, possibilities and prejudices in the world of mystical abbreviation."
+        ]
+      }
+    },
+    "4": {
+      "name": "FLASTER",
+      "url": "https://www.flaster.co/hr",
+      "text": {
+        "hr": [
+          "Flaster je mjerljiva OOH oglašivačka platforma specijalizirana za pokretne oglase. Flaster koristi tehnologiju koja omogućuje mjerenje pokretnih oglasa i pruža oglašivačima više komunikacijskih slojeva unutar jednog medija koji omogućuje veću izloženost njihovih klijenata na međunarodnoj razini.",
+          "360 omnichannel mreža nacionalne pokrivenosti koja povezuje ATL & BTL aktivacije preko vozača svaki dan na cesti, u najfrekventnijim gradskim područjima."
+        ],
+        "en": [
+          "Patcher is a measurable OOH advertising platform specialized in moving ads. The patch uses technology that enables measurement mobile ads and provides advertisers with multiple communication layers within one medium that allows greater exposure of theirs clients on an international level.",
+          "360 omnichannel network of national coverage connecting ATL &BTL activations via the driver every day on the road, in the most frequented city areas."
+        ]
+      }
+    },
+    "5": {
+      "name": "BIKADEMY",
+      "url": "https://bikademy.com",
+      "text": {
+        "hr": [
+          "Volite li biciklirati i istraživati kulturnu i prirodnu baštinu, mi smo tu da vas za to nagradimo! Sve što trebate je bicikl i dobra veza.",
+          "Bikademy je besplatna aplikacija koja vam nudi studije – gradove i regije – za bicikliranje. Svaki Studij ima nekoliko ispita – lokacija od kulturnog i prirodnog značaja. Posjetite te lokacije biciklom, snimite selfie ili fotografiju bicikla, prijavite se putem aplikacije Bikademy i nakon što posjetite tih nekoliko lokacija (položite sve ispite), mi ćemo vam poslati nagradu. Sve što trebate učiniti je završiti svoje ispite.",
+          "Preuzmite i registrirajte se u aplikaciji Bikademy već danas ili pogledajte ovaj 1-minutni vodič o tome kako postati Bikademy student i osvojiti super biciklističke nagrade. PS Ako radite za grad, općinu, turističku zajednicu ili druge dionike, slobodno se obratite i dovedite Bikademy u svoje područje. Na interaktivan, edukativan i zabavan način promoviramo mikro regije kao poželjne biciklističke destinacije. To je savršena dodana vrijednost u turističkoj ponudi u područjima cikloturizma i urbane mobilnosti."
+        ],
+        "en": [
+          "If you like cycling and exploring cultural and natural heritage, we we are here to reward you for that! All you need is a bike and some goods connection.",
+          "Bikademy is a free application that offers you studies - cities and regions – for cycling. Each Study has several exams - a location of cultural and natural significance. Visit these locations by bike, take a selfie or photo of the bike, sign in via Bikademy app and after visiting those few locations (pass all exams), we will send you a reward. Everything you need do is finish your exams.",
+          "Download and register on the Bikademy app today or check out this 1-minute guide on how to become a Bikademy student and win super bike prizes. PS If you work for the city, municipality, tourist association or other stakeholders, feel free to contact us and bring Bikademy to your area. On interactive, educational and in a fun way, we promote micro-regions as desirable cycling destinations destinations. It is a perfect added value in the tourist offer in in the areas of cycle tourism and urban mobility."
+        ]
+      }
+    },
+    "6": {
+      "name": "ZULUHOOD",
+      "url": "https://www.zuluhood.com",
+      "text": {
+        "hr": [
+          "Zuluhood je prva mobilna platforma koja pruža kućne sigurnosne usluge na zahtjev prilagođene pametnim domovima. Dok pametni uređaji mogu nadzirati naše domove, tradicionalne sigurnosne usluge ne mogu se uvijek dobro integrirati s njima, niti pružaju fleksibilnost i prilagodbu koja nam je potrebna. Zuluhood to mijenja isporukom prve mobilne platforme za kućne sigurnosne usluge kojima možemo pristupiti na zahtjev i koje su kompatibilne s našim pametnim domovima. Besprijekorno se integrira s raznim sigurnosnim sustavima pametnog doma, omogućujući korisnicima da prilagode upozorenja koja primaju u mobilnoj aplikaciji Zuluhood za događaje kao što su curenje plina, požari, poplave, otkrivanje upada i osobna sigurnost te aktiviraju uslugu nadzora alarma, na primjer, samo za vikend gateway. To je freemium rješenje koje automatski upozorava naše susjede u slučaju alarma s besplatnom verzijom ili omogućuje pristup lokalnim profesionalnim uslugama kad god su nam potrebne."
+        ],
+        "en": [
+          "Zuluhood is the first mobile platform that provides home security on-demand services tailored to smart homes. While smart devices can monitor our homes, traditional security services cannot are always well integrated with them, nor do they provide flexibility and the adjustment we need. Zuluhood changes that by delivering the first mobile platforms for home security services that we can access on demand and which are compatible with our smart homes. It integrates seamlessly with various security systems of a smart home, allowing users to customize alerts that receive in the Zuluhood mobile app for events such as gas leaks, fires, floods, intrusion detection and personal security and activate the alarm monitoring service, for example, only for the weekend gateway. It's a freemium solution that automatically alerts ours neighbors in the event of an alarm with the free version or allows access local professional services whenever we need them."
+        ]
+      }
+    },
+    "7": {
+      "name": "GET UP & GROW!",
+      "url": null,
+      "text": {
+        "hr": [
+          "Jutro započinjemo ‘otimanjem’ publike i podizanjem energije kroz sneak preview jedinstvenog HR projekta GROW!… Get up and GROW! vodi nas iz tech lifea u real life - body and mind balance na kreativan i izazovan način.",
+          "Jeste li danas razmišljali o sebi u smjeru poboljšanja preocesa rada? Jeste li bili kreativni kada ste razmišljali o svome zdravlju i nošenju sa stresom? Jeste li uopće razmišljali o svome zdravlju?"
+        ],
+        "en": [
+          "We start the morning by \"kidnapping\" the audience and raising the energy throughout sneak preview of the unique HR project GROW!… Get up and GROW! leads us from tech life to real life - body and mind balance to creative and challenging way.",
+          "Have you thought about yourself today in the direction of improving preoces work? Have you been creative when thinking about your health? and dealing with stress? Have you ever thought about your health?"
+        ]
+      }
+    }
+  }
+}

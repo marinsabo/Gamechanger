@@ -1,0 +1,141 @@
+---
+import { Image } from 'astro:assets';
+import { isDarkLogo, isOpaqueLogo, partnerLogo, partnerName, sponsorTiers } from '@/lib/data';
+import { useTranslations, type Lang, type UIKey } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+// Headline tiers get bigger tiles; long community / media lists get a denser grid.
+const dense = new Set(['community-partner', 'media-partner']);
+---
+
+<div class="partners">
+  {
+    sponsorTiers.map((tier) => (
+      <section class:list={['partners__tier', { 'partners__tier--dense': dense.has(tier.tier) }]} data-reveal>
+        <h3 class="partners__label">{t(`tier.${tier.tier}` as UIKey)}</h3>
+        <ul class="partners__grid">
+          {tier.items.map((item) => {
+            const logo = partnerLogo(item.logo);
+            if (!logo) return null;
+            const name = partnerName(item.logo);
+            const img = (
+              <Image
+                src={logo}
+                alt={name}
+                widths={[160, 320]}
+                sizes="160px"
+                class:list={['partners__logo', { 'partners__logo--opaque': isOpaqueLogo(item.logo), 'partners__logo--dark': isDarkLogo(item.logo) }]}
+              />
+            );
+            return (
+              <li class="partners__item">
+                {item.url ? (
+                  <a href={item.url} rel="noopener" target="_blank" title={name}>
+                    {img}
+                  </a>
+                ) : (
+                  <span title={name}>{img}</span>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .partners {
+    display: grid;
+    gap: 48px;
+  }
+
+  .partners__tier {
+    display: grid;
+    gap: 16px;
+  }
+
+  @media (min-width: 900px) {
+    .partners__tier {
+      grid-template-columns: 220px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+  }
+
+  .partners__label {
+    padding-top: 12px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .partners__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .partners__tier--dense .partners__grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+
+  .partners__item > * {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    min-height: 104px;
+    padding: 22px 26px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+    transition:
+      background-color 0.25s,
+      border-color 0.25s;
+  }
+
+  .partners__tier--dense .partners__item > * {
+    min-height: 88px;
+    padding: 18px 22px;
+  }
+
+  .partners__item a:hover {
+    border-color: var(--line-strong);
+    background: var(--surface);
+  }
+
+  .partners__item :global(.partners__logo) {
+    width: auto;
+    max-width: 100%;
+    max-height: 44px;
+    object-fit: contain;
+    opacity: 0.72;
+    filter: grayscale(1) brightness(1.6);
+    transition:
+      opacity 0.25s,
+      filter 0.25s;
+  }
+
+  .partners__item :global(.partners__logo--opaque) {
+    filter: grayscale(1);
+    border-radius: 4px;
+  }
+
+  .partners__item :global(.partners__logo--dark) {
+    filter: invert(1) grayscale(1) brightness(1.6);
+  }
+
+  .partners__item a:hover :global(.partners__logo) {
+    opacity: 1;
+    filter: none;
+  }
+</style>

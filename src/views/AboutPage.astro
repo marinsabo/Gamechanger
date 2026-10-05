@@ -1,0 +1,286 @@
+---
+import { Image } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import type { ImageMetadata } from 'astro';
+import Icon from '@/components/Icon.astro';
+import type { IconName } from '@/lib/icons';
+import PageHero from '@/components/PageHero.astro';
+import SectionHead from '@/components/SectionHead.astro';
+import PressQuotes from '@/components/PressQuotes.astro';
+import { href, routes, withBase, useTranslations, type Lang, type Localized } from '@/i18n';
+
+import missionImg from '@/assets/photos/zagreb-hall-audience.webp';
+import goalImg from '@/assets/photos/panel-talk.webp';
+import visionImg from '@/assets/photos/glitch-head.webp';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const blocks: { key: 'about.mission' | 'about.goal' | 'about.vision'; img: ImageMetadata; alt: Localized; text: Localized<string[]> }[] = [
+  {
+    key: 'about.mission',
+    img: missionImg,
+    alt: { hr: 'Publika prati predavanje u dvorani Z Centra', en: 'An audience following a talk at Z Centar' },
+    text: {
+      hr: [
+        'Game Changer ima misiju stvoriti platformu koja će dati ključni doprinos u procesu tehnološke i digitalne transformacije — kroz multidisciplinarni pristup integraciji progresivnih tehnoloških rješenja u svakodnevni život i rad.',
+        'Oslobađanjem potencijala pojedinca te promicanjem tehnologije i kreativnih rješenja za njezinu primjenu, Game Changer je ključni nositelj procesa jačanja kapaciteta pojedinaca i organizacija, s ciljem otvaranja novih perspektiva u poslovanju, na tržištu rada i u obrazovanju.',
+        'Game Changer vidimo kao platformu koja ima revolucionarni učinak na sinergiju tehnologije, kapitala i znanja — most između ekonomske, obrazovne, znanstvene i tehnološke zajednice i krajnjeg korisnika.',
+      ],
+      en: [
+        'Game Changer’s mission is to create a platform that makes a key contribution to technological and digital transformation — through a multidisciplinary approach to integrating progressive technology into everyday life and work.',
+        'By unlocking individual potential and promoting technology and the creative solutions that apply it, Game Changer is a key driver in strengthening the capacity of individuals and organisations, opening new perspectives in business, the labour market and education.',
+        'We see Game Changer as a platform with a revolutionary effect on the synergy of technology, capital and knowledge — a bridge between the economic, educational, scientific and technology communities and the end user.',
+      ],
+    },
+  },
+  {
+    key: 'about.goal',
+    img: goalImg,
+    alt: { hr: 'Dvojica panelista u razgovoru na pozornici', en: 'Two panelists in conversation on stage' },
+    text: {
+      hr: [
+        'Cilj Game Changer platforme je stvoriti jedinstveno okruženje koje povezuje digitalne i poslovne lidere s generacijama koje dolaze, uz profesionalnu orijentaciju usmjerenu na poslove budućnosti.',
+        'Umrežavamo donositelje odluka iz različitih industrija i povezujemo ih s krajnjim korisnicima. Game Changer preuzima odgovornost za demonstraciju praktičnih primjena kroz razvoj jedinstvenih tehnoloških alata — na vlastitom razvoju proizvoda.',
+      ],
+      en: [
+        'The Game Changer platform aims to create a unique environment that connects digital and business leaders with the generations to come, with a professional focus on the jobs of the future.',
+        'We network decision-makers from different industries and connect them with end users. Game Changer takes responsibility for demonstrating practical applications by developing unique technology tools — through its own product development.',
+      ],
+    },
+  },
+  {
+    key: 'about.vision',
+    img: visionImg,
+    alt: { hr: 'Digitalna glitch ilustracija ljudskog lica', en: 'A digital glitch illustration of a human face' },
+    text: {
+      hr: [
+        'Game Changer vizija usmjerava nas prema transformaciji gospodarstva i obrazovanja — prema potpunom prijelazu društva s analognog na digitalno.',
+        'Stvaramo ekološki održivu budućnost u kojoj je tehnologija u službi razvoja čovječanstva.',
+      ],
+      en: [
+        'The Game Changer vision steers us towards transforming the economy and education — towards society’s complete transition from analogue to digital.',
+        'We are building an ecologically sustainable future in which technology serves the development of humanity.',
+      ],
+    },
+  },
+];
+
+const hospitality: { icon: IconName; title: string; body: string }[] = [
+  { icon: 'pin', title: t('about.hosp.location'), body: t('about.hosp.location.body') },
+  { icon: 'bus', title: t('about.hosp.transport'), body: t('about.hosp.transport.body') },
+  { icon: 'bed', title: t('about.hosp.stay'), body: t('about.hosp.stay.body') },
+];
+---
+
+<Base
+  lang={lang}
+  title={t('nav.about')}
+  description={blocks[0].text[lang][0]}
+  current="about"
+  alternates={{ hr: withBase(routes.about.hr), en: withBase(routes.about.en) }}
+>
+  <PageHero kicker={t('about.kicker')} title={t('about.title')} lead={t('site.description')} />
+
+  <section class="section pillars" aria-label={t('about.title')}>
+    <div class="container">
+      {
+        blocks.map((b, i) => (
+          <article class:list={['pillar', { 'pillar--flip': i % 2 === 1 }]} data-reveal>
+            <div class="pillar__media">
+              <Image src={b.img} alt={b.alt[lang]} widths={[480, 800, 1100]} sizes="(min-width: 1000px) 45vw, 100vw" />
+            </div>
+            <div class="pillar__text">
+              <span class="mono pillar__num">0{i + 1}</span>
+              <h2 class="display-2">{t(b.key)}</h2>
+              {b.text[lang].map((p, j) => (
+                <p class:list={{ lead: j === 0 }}>{p}</p>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section--raised" aria-labelledby="press-title">
+    <div class="container">
+      <SectionHead kicker={t('about.press.kicker')} title={t('about.press.title')} lead={t('about.press.body')} id="press-title" />
+      <PressQuotes lang={lang} />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="hosp-title">
+    <div class="container">
+      <SectionHead title={t('about.hosp.title')} id="hosp-title" />
+      <ul class="hosp">
+        {
+          hospitality.map((h, i) => (
+            <li class="hosp__card" data-reveal style={`--reveal-delay:${i * 0.08}s`}>
+              <span class="hosp__icon">
+                <Icon name={h.icon} size={26} />
+              </span>
+              <h3>{h.title}</h3>
+              <p class="muted">{h.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="cta" data-reveal>
+        <h2 class="display-3">{t('speakers.title')}</h2>
+        <div class="cta__actions">
+          <a class="btn" href={href('program', lang)}>
+            {t('hero.cta.program')}
+            <Icon name="arrow-right" />
+          </a>
+          <a class="btn btn--ghost" href={href('speakers', lang)}>{t('speakers.all')}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .pillars {
+    padding-top: 0;
+  }
+
+  .pillars .container {
+    display: grid;
+    gap: clamp(64px, 9vw, 120px);
+  }
+
+  .pillar {
+    display: grid;
+    gap: 32px;
+    align-items: center;
+  }
+
+  @media (min-width: 1000px) {
+    .pillar {
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .pillar--flip .pillar__media {
+      order: 2;
+    }
+  }
+
+  .pillar__media {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: #000;
+  }
+
+  .pillar__media :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .pillar__text {
+    display: grid;
+    gap: 20px;
+  }
+
+  .pillar__text p:not(.lead) {
+    color: var(--text-muted);
+    max-width: 62ch;
+  }
+
+  .pillar__text .lead {
+    color: var(--text);
+  }
+
+  .pillar__num {
+    font-size: 0.875rem;
+    letter-spacing: 0.16em;
+    color: var(--red);
+  }
+
+  .hosp {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 16px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hosp__card {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--bg-raised);
+  }
+
+  .hosp__card h3 {
+    font-size: 1.375rem;
+  }
+
+  .hosp__icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 8px;
+    border-radius: var(--radius);
+    background: var(--red-soft);
+    color: var(--red);
+  }
+
+  .cta {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+    margin-top: clamp(64px, 8vw, 104px);
+    padding: clamp(32px, 5vw, 56px);
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(80% 140% at 100% 0%, rgb(255 255 255 / 0.18), transparent 60%),
+      var(--red);
+  }
+
+  @media (min-width: 900px) {
+    .cta {
+      grid-template-columns: 1fr auto;
+    }
+  }
+
+  .cta h2 {
+    text-transform: uppercase;
+    font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cta .btn {
+    --btn-bg: #fff;
+    --btn-fg: var(--bg);
+    --btn-border: #fff;
+  }
+
+  .cta .btn--ghost {
+    --btn-bg: transparent;
+    --btn-fg: #fff;
+    --btn-border: rgb(255 255 255 / 0.6);
+  }
+
+  .cta .btn:hover {
+    --btn-bg: var(--bg);
+    --btn-fg: #fff;
+    --btn-border: var(--bg);
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+import Base from '@/layouts/Base.astro';
+import Logo from '@/components/Logo.astro';
+import Icon from '@/components/Icon.astro';
+import { href, ui } from '@/i18n';
+---
+
+<Base lang="hr" title="404" alternates={{ hr: href('home', 'hr'), en: href('home', 'en') }} noindex>
+  <section class="nf">
+    <div class="container nf__inner">
+      <Logo wordmark={false} tile class="nf__logo" />
+      <p class="mono nf__code">404</p>
+      <h1 class="display-1">{ui.hr['notfound.title']}</h1>
+      <p class="lead">{ui.hr['notfound.body']} <span lang="en">/ {ui.en['notfound.body']}</span></p>
+      <div class="nf__actions">
+        <a class="btn" href={href('home', 'hr')}>
+          <Icon name="arrow-left" />
+          {ui.hr['notfound.cta']}
+        </a>
+        <a class="btn btn--ghost" href={href('home', 'en')} lang="en">{ui.en['notfound.cta']}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    display: grid;
+    place-items: center;
+    min-height: calc(100svh - var(--header-h) - 120px);
+    padding-block: 80px;
+    text-align: center;
+  }
+
+  .nf__inner {
+    display: grid;
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .nf__inner :global(.nf__logo svg) {
+    width: 72px;
+    height: 72px;
+  }
+
+  .nf__code {
+    font-size: 0.875rem;
+    letter-spacing: 0.3em;
+    color: var(--red);
+  }
+
+  .nf__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+</style>

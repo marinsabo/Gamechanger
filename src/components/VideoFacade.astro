@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icon from './Icon.astro';
+import { useTranslations, type Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+  videoId: string;
+  poster: ImageMetadata;
+  title: string;
+}
+
+const { lang, videoId, poster, title } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<figure class="video-wrap">
+<div class="video" data-video={videoId} data-title={title}>
+  <Image src={poster} alt="" widths={[640, 1024, 1600]} sizes="(min-width: 1240px) 1240px, 100vw" class="video__poster" />
+  <button class="video__play" type="button" data-play>
+    <span class="video__btn"><Icon name="play" size={30} /></span>
+    <span class="video__label">{t('video.play')}</span>
+  </button>
+</div>
+<figcaption class="video__note">{t('video.consent')}</figcaption>
+</figure>
+
+<script>
+  // Privacy-friendly facade: nothing is requested from YouTube until the visitor presses play.
+  document.querySelectorAll<HTMLElement>('[data-video]').forEach((el) => {
+    el.querySelector('[data-play]')?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${el.dataset.video}?autoplay=1&rel=0`;
+      iframe.title = el.dataset.title ?? 'Video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      el.replaceChildren(iframe);
+      el.classList.add('is-playing');
+    });
+  });
+</script>
+
+<style>
+  .video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: #000;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .video :global(.video__poster),
+  .video :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+  }
+
+  .video :global(.video__poster) {
+    opacity: 0.6;
+    transition:
+      opacity 0.4s,
+      transform 1s var(--ease-out);
+  }
+
+  .video__play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 16px;
+    background: radial-gradient(circle at center, transparent 20%, rgb(8 9 12 / 0.5));
+  }
+
+  .video__btn {
+    display: grid;
+    place-items: center;
+    width: clamp(72px, 9vw, 104px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--red);
+    color: #fff;
+    box-shadow: 0 0 0 0 rgb(255 45 45 / 0.5);
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .video__btn {
+      animation: pulse 2.4s infinite;
+    }
+  }
+
+  @keyframes pulse {
+    70% {
+      box-shadow: 0 0 0 22px rgb(255 45 45 / 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgb(255 45 45 / 0);
+    }
+  }
+
+  .video__label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+  }
+
+  .video__play:hover .video__btn {
+    transform: scale(1.08);
+  }
+
+  .video:hover :global(.video__poster) {
+    opacity: 0.75;
+    transform: scale(1.02);
+  }
+
+  .video__note {
+    margin-top: 14px;
+    font-size: 0.8125rem;
+    color: var(--text-faint);
+  }
+</style>

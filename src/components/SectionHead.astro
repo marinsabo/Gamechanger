@@ -1,0 +1,33 @@
+---
+interface Props {
+  kicker?: string;
+  title: string;
+  lead?: string;
+  id?: string;
+  size?: 'lg' | 'md';
+}
+const { kicker, title, lead, id, size = 'lg' } = Astro.props;
+const hasAside = Astro.slots.has('default');
+---
+
+<div class:list={['section-head', { 'section-head--split': hasAside || lead }]} data-reveal>
+  <div class="section-head__main">
+    {kicker && <p class="kicker">{kicker}</p>}
+    <h2 id={id} class:list={[size === 'lg' ? 'display-2' : 'display-3']}>{title}</h2>
+  </div>
+  {
+    (lead || hasAside) && (
+      <div class="section-head__aside">
+        {lead && <p class="lead">{lead}</p>}
+        <slot />
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .section-head__main {
+    display: grid;
+    gap: 18px;
+  }
+</style>

@@ -1,0 +1,282 @@
+[
+  {
+    "tier": "friend",
+    "items": [
+      {
+        "logo": "jutarnji-list.webp",
+        "name": "Sponzor",
+        "url": "https://www.jutarnji.hr/"
+      }
+    ]
+  },
+  {
+    "tier": "hall-partner",
+    "items": [
+      {
+        "logo": "cola.webp",
+        "name": "Sponzor",
+        "url": "https://hr.coca-colahellenic.com/"
+      },
+      {
+        "logo": "adiko.webp",
+        "name": "Sponzor",
+        "url": "https://www.addiko.hr/"
+      },
+      {
+        "logo": "samsung.webp",
+        "name": "Sponzor",
+        "url": "https://www.samsung.com/hr/"
+      },
+      {
+        "logo": "eu-komisija.webp",
+        "name": "Sponzor",
+        "url": "https://commission.europa.eu/index_hr"
+      }
+    ]
+  },
+  {
+    "tier": "panel-partner",
+    "items": [
+      {
+        "logo": "herbalife.webp",
+        "name": "Sponzor",
+        "url": "https://www.herbalife.hr/"
+      },
+      {
+        "logo": "crowe.webp",
+        "name": "Sponzor",
+        "url": "https://www.crowe.com/hr"
+      },
+      {
+        "logo": "podravka.webp",
+        "name": "Sponzor",
+        "url": "https://www.podravka.hr/"
+      },
+      {
+        "logo": "revuto.webp",
+        "name": "Sponzor",
+        "url": "https://revuto.com/"
+      },
+      {
+        "logo": "apis.webp",
+        "name": "Sponzor",
+        "url": "https://www.apis-it.hr/apisit/index.html#/"
+      },
+      {
+        "logo": "schneiderelectric.webp",
+        "name": "Sponzor",
+        "url": "https://www.se.com/hr/hr/"
+      },
+      {
+        "logo": "rit.webp",
+        "name": "Sponzor",
+        "url": "https://www.rit.edu/croatia/"
+      },
+      {
+        "logo": "philips.webp",
+        "name": "Sponzor",
+        "url": "https://www.philips.hr/c-m-pe/oneblade-podrezivanje-oblik-brijanje"
+      },
+      {
+        "logo": "laqo.webp",
+        "name": "Sponzor",
+        "url": "https://www.laqo.hr/"
+      },
+      {
+        "logo": "garden.webp",
+        "name": "Sponzor",
+        "url": null
+      },
+      {
+        "logo": "hr-lutrija.webp",
+        "name": "Sponzor",
+        "url": null
+      },
+      {
+        "logo": "papar.png",
+        "name": "Sponzor",
+        "url": null
+      },
+      {
+        "logo": "hgspot.webp",
+        "name": "Sponzor",
+        "url": null
+      }
+    ]
+  },
+  {
+    "tier": "coffee-break-partner",
+    "items": [
+      {
+        "logo": "delonghi.webp",
+        "name": "Sponzor",
+        "url": "https://www.delonghi.com/hr-hr"
+      }
+    ]
+  },
+  {
+    "tier": "good-vibe-partner",
+    "items": [
+      {
+        "logo": "tanqueray.webp",
+        "name": "Sponzor",
+        "url": null
+      },
+      {
+        "logo": "hennessy.webp",
+        "name": "Sponzor",
+        "url": null
+      }
+    ]
+  },
+  {
+    "tier": "community-partner",
+    "items": [
+      {
+        "logo": "joberty.webp",
+        "name": "Sponzor",
+        "url": "https://www.joberty.hr/"
+      },
+      {
+        "logo": "GROW.webp",
+        "name": "Sponzor",
+        "url": null
+      },
+      {
+        "logo": "W3B-GAME.webp",
+        "name": "Sponzor",
+        "url": null
+      },
+      {
+        "logo": "croai.webp",
+        "name": "Sponzor",
+        "url": "https://www.croai.org/"
+      },
+      {
+        "logo": "cgda.webp",
+        "name": "Sponzor",
+        "url": "https://cgda.eu/"
+      },
+      {
+        "logo": "polygon.webp",
+        "name": "Sponzor",
+        "url": "https://polygon.technology/"
+      },
+      {
+        "logo": "iab.webp",
+        "name": "Sponzor",
+        "url": "https://www.iab-croatia.com/"
+      },
+      {
+        "logo": "ecommerce.webp",
+        "name": "Sponzor",
+        "url": "https://ecommerce.hr/"
+      },
+      {
+        "logo": "wespa.webp",
+        "name": "Sponzor",
+        "url": "https://wespa.hr/hr/"
+      },
+      {
+        "logo": "ubik.webp",
+        "name": "Sponzor",
+        "url": "https://ubik.hr/en/"
+      },
+      {
+        "logo": "zcentar.webp",
+        "name": "Sponzor",
+        "url": "https://zcentar.hr/"
+      },
+      {
+        "logo": "eal.webp",
+        "name": "Sponzor",
+        "url": null
+      },
+      {
+        "logo": "hog.png",
+        "name": "Sponzor",
+        "url": "https://www.hog.hr/"
+      },
+      {
+        "logo": "crostartup.webp",
+        "name": "Sponzor",
+        "url": "https://crostartup.org/"
+      },
+      {
+        "logo": "odlican-tri.webp",
+        "name": "Sponzor",
+        "url": null
+      },
+      {
+        "logo": "jysk.webp",
+        "name": "Sponzor",
+        "url": null
+      },
+      {
+        "logo": "uber.webp",
+        "name": "Sponzor",
+        "url": null
+      }
+    ]
+  },
+  {
+    "tier": "media-partner",
+    "items": [
+      {
+        "logo": "dxtalks.webp",
+        "name": "Sponzor",
+        "url": "https://www.dxtalks.com/"
+      },
+      {
+        "logo": "bug.webp",
+        "name": "Sponzor",
+        "url": "https://www.bug.hr/"
+      },
+      {
+        "logo": "coinpedia.webp",
+        "name": "Sponzor",
+        "url": "https://events.coinpedia.org/"
+      },
+      {
+        "logo": "beincripto.webp",
+        "name": "Sponzor",
+        "url": "https://beincrypto.com/"
+      },
+      {
+        "logo": "division.webp",
+        "name": "Sponzor",
+        "url": "https://division.hr/"
+      },
+      {
+        "logo": "cryptorunner-com-all-white-logo.webp",
+        "name": "Sponzor",
+        "url": "https://cryptorunner.com/"
+      },
+      {
+        "logo": "go2digital.webp",
+        "name": "Sponzor",
+        "url": "https://www.go2digital.hr/"
+      },
+      {
+        "logo": "netokracija.webp",
+        "name": "Sponzor",
+        "url": "https://www.dxtalks.com/"
+      },
+      {
+        "logo": "Laganini-logo.webp",
+        "name": "Sponzor",
+        "url": "http://laganini.fm/"
+      },
+      {
+        "logo": "LIDER-logo.webp",
+        "name": "Sponzor",
+        "url": "https://lidermedia.hr/"
+      },
+      {
+        "logo": "znatko-logo.webp",
+        "name": "Sponzor",
+        "url": "https://znatko.com/"
+      }
+    ]
+  }
+]

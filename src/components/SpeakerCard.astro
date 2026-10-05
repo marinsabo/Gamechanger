@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import { speakerImage, type Speaker } from '@/lib/data';
+import type { Lang } from '@/i18n';
+
+interface Props {
+  speaker: Speaker;
+  lang: Lang;
+  href?: string;
+  /** Render as a button that opens the bio dialog (speakers page). */
+  asButton?: boolean;
+  halls?: string[];
+  eager?: boolean;
+}
+
+const { speaker, lang, href, asButton, halls = [], eager } = Astro.props;
+const Tag = asButton ? 'button' : 'a';
+---
+
+<article class="speaker" data-speaker={speaker.id} data-halls={halls.join(' ')} data-search={`${speaker.name} ${speaker.role[lang]}`.toLowerCase()}>
+  <Tag
+    class="speaker__hit"
+    href={asButton ? undefined : href}
+    type={asButton ? 'button' : undefined}
+    data-open-speaker={asButton ? speaker.id : undefined}
+    aria-haspopup={asButton ? 'dialog' : undefined}
+  >
+    <div class="speaker__media">
+      <Image
+        src={speakerImage(speaker.id)}
+        alt=""
+        widths={[240, 360, 480]}
+        sizes="(min-width: 1200px) 220px, (min-width: 700px) 30vw, 46vw"
+        loading={eager ? 'eager' : 'lazy'}
+      />
+    </div>
+    <div class="speaker__body">
+      <h3 class="speaker__name">{speaker.name}</h3>
+      {speaker.role[lang] && <p class="speaker__role">{speaker.role[lang].replaceAll(' / ', ' · ')}</p>}
+    </div>
+  </Tag>
+</article>
+
+<style>
+  .speaker__hit {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .speaker__media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .speaker__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px var(--line);
+    background: linear-gradient(180deg, transparent 55%, rgb(255 45 45 / 0.55));
+    opacity: 0;
+    transition: opacity 0.35s var(--ease-out);
+  }
+
+  .speaker__media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
+    filter: grayscale(1) contrast(1.05);
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .speaker__hit:hover .speaker__media :global(img),
+  .speaker__hit:focus-visible .speaker__media :global(img) {
+    transform: scale(1.04);
+  }
+
+  .speaker__hit:hover .speaker__media::after,
+  .speaker__hit:focus-visible .speaker__media::after {
+    opacity: 1;
+  }
+
+  .speaker__body {
+    padding: 14px 2px 0;
+  }
+
+  .speaker__name {
+    font-size: 1.125rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+
+  .speaker__role {
+    margin-top: 6px;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

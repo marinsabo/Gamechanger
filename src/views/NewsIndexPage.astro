@@ -1,0 +1,48 @@
+---
+import Base from '@/layouts/Base.astro';
+import PageHero from '@/components/PageHero.astro';
+import NewsCard from '@/components/NewsCard.astro';
+import { getNews } from '@/lib/news';
+import { routes, withBase, useTranslations, type Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const news = await getNews(lang);
+const first = news.find((n) => n.data.featured) ?? news[0];
+const rest = news.filter((n) => n !== first);
+---
+
+<Base
+  lang={lang}
+  title={t('nav.news')}
+  description={t('news.lead')}
+  current="news"
+  alternates={{ hr: withBase(routes.news.hr), en: withBase(routes.news.en) }}
+>
+  <PageHero kicker={t('news.kicker')} title={t('news.title')} lead={t('news.lead')} />
+  <section class="section news-index">
+    <div class="container">
+      {first && <NewsCard entry={first} lang={lang} size="large" />}
+      <div class="grid">
+        {rest.map((entry) => <NewsCard entry={entry} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .news-index {
+    padding-top: 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+</style>

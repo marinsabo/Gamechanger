@@ -1,0 +1,837 @@
+---
+import { Image } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import Icon from '@/components/Icon.astro';
+import SectionHead from '@/components/SectionHead.astro';
+import SpeakerCard from '@/components/SpeakerCard.astro';
+import NewsCard from '@/components/NewsCard.astro';
+import PartnerWall from '@/components/PartnerWall.astro';
+import PressQuotes from '@/components/PressQuotes.astro';
+import VideoFacade from '@/components/VideoFacade.astro';
+import { halls, partnerLogo, partnerName, speakerById, speakers, type Speaker } from '@/lib/data';
+import { getNews, slugOf } from '@/lib/news';
+import { href, newsHref, routes, withBase, useTranslations, type Lang } from '@/i18n';
+
+import heroImg from '@/assets/photos/zagreb-main-stage.webp';
+import recordA from '@/assets/photos/zagreb-crowd-cheer.webp';
+import recordB from '@/assets/photos/zagreb-cinema-red.webp';
+import recordC from '@/assets/photos/zagreb-hall-audience.webp';
+import videoPoster from '@/assets/photos/zagreb-6.webp';
+import sustainImg from '@/assets/photos/sustainable-events.webp';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const news = await getNews(lang);
+const featured = news.find((n) => n.data.featured) ?? news[0];
+const latest = news.filter((n) => n !== featured).slice(0, 3);
+
+const spotlightIds = [
+  'davor-bruketa',
+  'hajdi-cenan',
+  'gordan-giricek',
+  'ivanka-mabic-gagic',
+  'sandro-mur',
+  'ida-pandur',
+  'jovan-tisma',
+  'vanja-ljevar',
+  'dario-marcac',
+  'martina-silov',
+  'stipe-plejic',
+  'roberto-barcellan',
+];
+const spotlight = spotlightIds.map((id) => speakerById.get(id)).filter((s): s is Speaker => Boolean(s));
+
+const stats = [
+  { value: '110', suffix: '+', label: t('stats.speakers') },
+  { value: '1100', suffix: '+', label: t('stats.visitors') },
+  { value: '5', suffix: '', label: t('stats.halls') },
+  { value: '34', suffix: '%', label: t('stats.women') },
+];
+
+const topics = ['Gaming', 'Web3', 'AI', 'Cybersecurity', 'eCommerce', 'Fintech', 'Gamification', 'Blockchain', 'Startups', 'NFT'];
+const hallAccent: Record<string, string> = { '2': 'var(--violet)', '3': 'var(--lime)', '4': 'var(--red)', '5': '#38bdf8', '6': '#fb923c' };
+---
+
+<Base lang={lang} alternates={{ hr: withBase(routes.home.hr), en: withBase(routes.home.en) }}>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__bg" aria-hidden="true">
+      <Image src={heroImg} alt="" widths={[768, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+    </div>
+    <div class="hero__grid grid-bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <p class="hero__eyebrow mono">
+        <Icon name="calendar" size={16} />
+        {t('hero.eyebrow')}
+      </p>
+      <h1 id="hero-title" class="display-1 hero__title">
+        {
+          t('hero.title')
+            .split(' ')
+            .map((word, i) => (
+              <>
+                <span class:list={['hero__word', { 'hero__word--accent': i === 4 }]} style={`--i:${i}`}>
+                  {word}
+                </span>{' '}
+              </>
+            ))
+        }
+      </h1>
+      <p class="lead hero__lead">{t('hero.lead')}</p>
+      <div class="hero__actions">
+        <a class="btn" href={href('program', lang)}>
+          {t('hero.cta.program')}
+          <Icon name="arrow-right" />
+        </a>
+        <a class="btn btn--ghost" href="#aftermovie">
+          <Icon name="play" />
+          {t('hero.cta.video')}
+        </a>
+      </div>
+    </div>
+    <div class="container">
+      <dl class="stats">
+        {
+          stats.map((s) => (
+            <div class="stats__item">
+              <dt class="visually-hidden">{s.label}</dt>
+              <dd>
+                <span class="stats__value" data-count={s.value}>
+                  {Number(s.value).toLocaleString(lang === 'hr' ? 'hr-HR' : 'en-US')}
+                </span>
+                <span class="stats__suffix">{s.suffix}</span>
+                <span class="stats__label" aria-hidden="true">
+                  {s.label}
+                </span>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- TOPICS MARQUEE -->
+  <div class="marquee" role="region" aria-label={t('topics.label')}>
+    <ul class="marquee__track">
+      {
+        [...topics, ...topics].map((topic, i) => (
+          <li aria-hidden={i >= topics.length ? 'true' : undefined}>
+            {topic}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <!-- INTRO -->
+  <section class="section intro" aria-labelledby="intro-title">
+    <div class="container intro__grid">
+      <div class="intro__head" data-reveal>
+        <p class="kicker">{t('intro.kicker')}</p>
+        <h2 id="intro-title" class="display-2">{t('intro.title')}</h2>
+        <a class="link-arrow" href={href('about', lang)}>
+          {t('intro.more')}
+          <Icon name="arrow-right" />
+        </a>
+      </div>
+      <div class="intro__cards">
+        <article class="intro__card" data-reveal>
+          <span class="intro__num mono">01</span>
+          <h3>{t('intro.what.title')}</h3>
+          <p>{t('intro.what.body')}</p>
+        </article>
+        <article class="intro__card" data-reveal style="--reveal-delay:.1s">
+          <span class="intro__num mono">02</span>
+          <h3>{t('intro.why.title')}</h3>
+          <p>{t('intro.why.body')}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALLS -->
+  <section class="section section--raised" aria-labelledby="halls-title">
+    <div class="container">
+      <SectionHead kicker={t('halls.kicker')} title={t('halls.title')} lead={t('halls.lead')} id="halls-title">
+        <a class="link-arrow" href={href('program', lang)}>
+          {t('hero.cta.program')}
+          <Icon name="arrow-right" />
+        </a>
+      </SectionHead>
+      <ol class="halls">
+        {
+          halls.map((hall, i) => {
+            const logo = hall.partner ? partnerLogo(hall.partner) : undefined;
+            return (
+              <li class="hall" style={`--accent:${hallAccent[hall.number] ?? 'var(--red)'}; --reveal-delay:${i * 0.06}s`} data-reveal>
+                <a href={href('program', lang, `hall-${hall.number}`)} class="hall__link">
+                  <span class="hall__num mono">
+                    {t('halls.hall')} {hall.number.padStart(2, '0')}
+                  </span>
+                  <h3 class="hall__name">{hall.name[lang]}</h3>
+                  <p class="hall__meta">
+                    {hall.hosts.length > 1 ? t('halls.hosts') : t('halls.host')}: {hall.hosts.map((h) => h.name).join(', ')}
+                  </p>
+                  <div class="hall__foot">
+                    <span class="mono hall__count">
+                      {hall.sessions.filter((s) => s.speakers?.length || s.pitch).length} {t('halls.sessions')}
+                    </span>
+                    {logo && hall.partner && <Image src={logo} alt={partnerName(hall.partner)} widths={[120, 240]} sizes="120px" class="hall__logo" />}
+                    <Icon name="arrow-up-right" class="hall__arrow" />
+                  </div>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- RECORD / GALLERY -->
+  <section class="section record" aria-labelledby="record-title">
+    <div class="container record__grid">
+      <div class="record__copy" data-reveal>
+        <p class="kicker">{t('record.kicker')}</p>
+        <h2 id="record-title" class="display-2">{t('record.title')}</h2>
+        <p class="lead">{t('record.body')}</p>
+        {
+          featured && (
+            <a class="btn btn--ghost" href={newsHref(lang, slugOf(featured))}>
+              {t('record.cta')}
+              <Icon name="arrow-right" />
+            </a>
+          )
+        }
+      </div>
+      <div class="record__mosaic" data-reveal style="--reveal-delay:.1s">
+        <Image src={recordA} alt="" widths={[480, 800]} sizes="(min-width: 1000px) 30vw, 60vw" class="record__img record__img--a" />
+        <Image src={recordB} alt="" widths={[400, 640]} sizes="(min-width: 1000px) 22vw, 40vw" class="record__img record__img--b" />
+        <Image src={recordC} alt="" widths={[400, 640]} sizes="(min-width: 1000px) 22vw, 40vw" class="record__img record__img--c" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKERS -->
+  <section class="section section--raised" aria-labelledby="speakers-title">
+    <div class="container">
+      <SectionHead kicker={t('speakers.kicker')} title={t('speakers.title')} lead={t('speakers.lead')} id="speakers-title">
+        <a class="btn" href={href('speakers', lang)}>
+          {t('speakers.all')} ({speakers.length})
+          <Icon name="arrow-right" />
+        </a>
+      </SectionHead>
+      <div class="speaker-grid">
+        {
+          spotlight.map((s, i) => (
+            <div data-reveal style={`--reveal-delay:${(i % 6) * 0.05}s`}>
+              <SpeakerCard speaker={s} lang={lang} href={href('speakers', lang, s.id)} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="section" id="aftermovie" aria-labelledby="video-title">
+    <div class="container">
+      <SectionHead kicker={t('video.kicker')} title={t('video.title')} id="video-title" />
+      <div data-reveal>
+        <VideoFacade lang={lang} videoId="z4wNR4X-9l0" poster={videoPoster} title="Game Changer — aftermovie" />
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="section section--raised" aria-labelledby="news-title">
+    <div class="container">
+      <SectionHead kicker={t('news.kicker')} title={t('news.title')} id="news-title">
+        <a class="link-arrow" href={href('news', lang)}>
+          {t('news.all')}
+          <Icon name="arrow-right" />
+        </a>
+      </SectionHead>
+      {featured && <NewsCard entry={featured} lang={lang} size="large" />}
+      <div class="news-grid">
+        {latest.map((entry) => <NewsCard entry={entry} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section class="section" aria-labelledby="press-title">
+    <div class="container">
+      <SectionHead kicker={t('press.kicker')} title={t('press.title')} id="press-title" />
+      <PressQuotes lang={lang} />
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="section section--raised" id="partners" aria-labelledby="partners-title">
+    <div class="container">
+      <SectionHead kicker={t('partners.kicker')} title={t('partners.title')} id="partners-title" />
+      <PartnerWall lang={lang} />
+    </div>
+  </section>
+
+  <!-- SUSTAINABILITY -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="sustain" data-reveal>
+        <div class="sustain__icon"><Icon name="leaf" size={28} /></div>
+        <div>
+          <h2 class="display-3">{t('sustain.title')}</h2>
+          <p class="muted">{t('sustain.body')}</p>
+        </div>
+        <Image src={sustainImg} alt="Principles for Sustainable Events — Endorser" widths={[360, 540]} sizes="270px" class="sustain__img" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Count-up for the hero stats (skipped for reduced motion).
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const nodes = document.querySelectorAll<HTMLElement>('[data-count]');
+    const fmt = new Intl.NumberFormat(document.documentElement.lang === 'hr' ? 'hr-HR' : 'en-US');
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const el = entry.target as HTMLElement;
+        io.unobserve(el);
+        const target = Number(el.dataset.count);
+        const start = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min(1, (now - start) / 1400);
+          el.textContent = fmt.format(Math.round(target * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    });
+    nodes.forEach((n) => io.observe(n));
+  }
+</script>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: min(100svh - var(--header-h), 960px);
+    margin-top: calc(var(--header-h) * -1);
+    padding-top: calc(var(--header-h) + clamp(48px, 8vw, 96px));
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  .hero__bg :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+    filter: saturate(0.85);
+  }
+
+  .hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(120% 80% at 85% 10%, rgb(255 45 45 / 0.35), transparent 55%),
+      linear-gradient(180deg, rgb(8 9 12 / 0.55) 0%, rgb(8 9 12 / 0.7) 45%, var(--bg) 100%),
+      linear-gradient(90deg, rgb(8 9 12 / 0.85) 0%, transparent 70%);
+  }
+
+  .hero__grid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  .hero__inner {
+    display: grid;
+    gap: 28px;
+    justify-items: start;
+  }
+
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: rgb(8 9 12 / 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .hero__eyebrow :global(svg) {
+    flex: none;
+    color: var(--red);
+  }
+
+  @media (max-width: 479px) {
+    .hero__eyebrow {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  .hero__title {
+    max-width: 14ch;
+  }
+
+  .hero__word--accent {
+    color: var(--red);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__word {
+      display: inline-block;
+      animation: rise 0.9s var(--ease-out) both;
+      animation-delay: calc(var(--i) * 70ms + 100ms);
+    }
+
+    .hero__lead,
+    .hero__actions,
+    .hero__eyebrow {
+      animation: rise 0.9s var(--ease-out) both;
+      animation-delay: 0.55s;
+    }
+
+    .hero__eyebrow {
+      animation-delay: 0s;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.4em);
+    }
+  }
+
+  .hero__lead {
+    color: #c9cdd4;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: clamp(48px, 7vw, 88px);
+    border-top: 1px solid var(--line-strong);
+  }
+
+  @media (min-width: 800px) {
+    .stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stats__item {
+    padding: 24px 0 32px;
+  }
+
+  .stats__item + .stats__item {
+    padding-left: clamp(16px, 3vw, 32px);
+    border-left: 1px solid var(--line);
+  }
+
+  @media (max-width: 799px) {
+    .stats__item:nth-child(3) {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .stats__item:nth-child(n + 3) {
+      border-top: 1px solid var(--line);
+    }
+  }
+
+  .stats dd {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+  }
+
+  .stats__value,
+  .stats__suffix {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stats__suffix {
+    color: var(--red);
+  }
+
+  .stats__label {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ---------- Marquee ---------- */
+  .marquee {
+    overflow: hidden;
+    background: var(--red);
+    color: #fff;
+    border-block: 1px solid var(--red-strong);
+  }
+
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .marquee__track {
+      animation: marquee 40s linear infinite;
+    }
+  }
+
+  .marquee__track li {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 16px 0 16px 28px;
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .marquee__track li::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    transform: rotate(45deg);
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* ---------- Intro ---------- */
+  .intro__grid {
+    display: grid;
+    gap: 48px;
+  }
+
+  @media (min-width: 1000px) {
+    .intro__grid {
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .intro__head {
+      position: sticky;
+      top: calc(var(--header-h) + 40px);
+    }
+  }
+
+  .intro__head {
+    display: grid;
+    gap: 24px;
+    justify-items: start;
+  }
+
+  .intro__cards {
+    display: grid;
+    gap: 16px;
+  }
+
+  .intro__card {
+    position: relative;
+    display: grid;
+    gap: 14px;
+    padding: clamp(28px, 4vw, 44px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(160deg, var(--surface) 0%, var(--bg) 100%);
+    overflow: hidden;
+  }
+
+  .intro__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 3px;
+    background: var(--red);
+  }
+
+  .intro__card h3 {
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+  }
+
+  .intro__card p {
+    color: var(--text-muted);
+    font-size: 1.0625rem;
+  }
+
+  .intro__num {
+    font-size: 0.8125rem;
+    color: var(--red);
+    letter-spacing: 0.16em;
+  }
+
+  /* ---------- Halls ---------- */
+  .halls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hall__link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: 100%;
+    min-height: 200px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--bg);
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition:
+      border-color 0.3s,
+      transform 0.4s var(--ease-out);
+  }
+
+  @media (min-width: 700px) {
+    .hall__link {
+      min-height: 280px;
+    }
+  }
+
+  .hall__link::before {
+    content: '';
+    position: absolute;
+    inset: auto -30% -60% auto;
+    width: 220px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--accent);
+    filter: blur(70px);
+    opacity: 0.12;
+    transition: opacity 0.4s;
+  }
+
+  .hall__link:hover {
+    border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+    transform: translateY(-4px);
+  }
+
+  .hall__link:hover::before {
+    opacity: 0.3;
+  }
+
+  .hall__num {
+    font-size: 0.8125rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .hall__name {
+    font-size: 1.375rem;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
+  .hall__meta {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .hall__foot {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  .hall__count {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .hall__foot :global(.hall__logo) {
+    width: auto;
+    max-width: 72px;
+    max-height: 26px;
+    margin-left: auto;
+    object-fit: contain;
+    opacity: 0.7;
+    filter: grayscale(1) brightness(1.6);
+  }
+
+  .hall__foot :global(.hall__arrow) {
+    flex: none;
+    color: var(--text-faint);
+    transition:
+      color 0.2s,
+      transform 0.3s var(--ease-out);
+  }
+
+  .hall__link:hover :global(.hall__arrow) {
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
+
+  /* ---------- Record ---------- */
+  .record__grid {
+    display: grid;
+    gap: 56px;
+    align-items: center;
+  }
+
+  @media (min-width: 1000px) {
+    .record__grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 72px;
+    }
+  }
+
+  .record__copy {
+    display: grid;
+    gap: 24px;
+    justify-items: start;
+  }
+
+  .record__mosaic {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    aspect-ratio: 5 / 4;
+  }
+
+  .record__mosaic :global(.record__img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .record__mosaic :global(.record__img--a) {
+    grid-row: 1 / 3;
+  }
+
+  /* ---------- Speakers ---------- */
+  .speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
+  }
+
+  @media (min-width: 700px) {
+    .speaker-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .speaker-grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  /* ---------- News ---------- */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  /* ---------- Sustainability ---------- */
+  .sustain {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+    padding: clamp(28px, 4vw, 44px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(120deg, rgb(184 255 60 / 0.06), transparent 50%), var(--bg-raised);
+  }
+
+  @media (min-width: 900px) {
+    .sustain {
+      grid-template-columns: auto 1fr auto;
+      gap: 40px;
+    }
+  }
+
+  .sustain h2 {
+    margin-bottom: 10px;
+    max-width: 30ch;
+  }
+
+  .sustain__icon {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgb(184 255 60 / 0.12);
+    color: var(--lime);
+  }
+
+  .sustain :global(.sustain__img) {
+    width: 270px;
+    border-radius: var(--radius);
+  }
+</style>

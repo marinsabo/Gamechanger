@@ -1,0 +1,194 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { href, useTranslations, type Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const socials = [
+  { icon: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/gamechanger.hr/' },
+  { icon: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/company/gamechangerhr/' },
+  { icon: 'facebook', label: 'Facebook', url: 'https://www.facebook.com/gamechanger.hr/' },
+] as const;
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <Logo />
+        <p>{t('footer.about')}</p>
+        <ul class="site-footer__social">
+          {
+            socials.map((s) => (
+              <li>
+                <a href={s.url} rel="noopener" target="_blank" aria-label={s.label}>
+                  <Icon name={s.icon} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <nav class="site-footer__col" aria-label={t('footer.explore')}>
+        <h2>{t('footer.explore')}</h2>
+        <ul>
+          <li><a href={href('about', lang)}>{t('nav.about')}</a></li>
+          <li><a href={href('program', lang)}>{t('nav.program')}</a></li>
+          <li><a href={href('speakers', lang)}>{t('nav.speakers')}</a></li>
+          <li><a href={href('news', lang)}>{t('nav.news')}</a></li>
+          <li><a href={href('home', lang, 'partners')}>{t('nav.partners')}</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__col">
+        <h2>{t('footer.contact')}</h2>
+        <ul>
+          <li>
+            <a class="site-footer__mail" href="mailto:info@gamechanger.hr">
+              <Icon name="mail" size={18} /> info@gamechanger.hr
+            </a>
+          </li>
+          <li class="muted">Z Centar · Zagreb</li>
+          <li class="muted">Cukrarna · Ljubljana</li>
+        </ul>
+      </div>
+    </div>
+
+    <svg class="site-footer__wordmark" viewBox="0 0 1000 118" aria-hidden="true">
+      <text
+        x="0"
+        y="104"
+        textLength="1000"
+        lengthAdjust="spacingAndGlyphs"
+        fill="none"
+        stroke="rgb(255 255 255 / 0.14)"
+        stroke-width="1"
+        font-family="'Chakra Petch', sans-serif"
+        font-weight="700"
+        font-size="138">GAME CHANGER</text
+      >
+    </svg>
+
+    <div class="site-footer__bottom">
+      <p>© 2022–2023 Game Changer · <a href={href('privacy', lang)}>{t('footer.privacy')}</a></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: clamp(64px, 8vw, 104px);
+    border-top: 1px solid var(--line);
+    background: var(--bg-raised);
+    overflow: hidden;
+  }
+
+  .site-footer__top {
+    display: grid;
+    gap: 48px;
+  }
+
+  @media (min-width: 800px) {
+    .site-footer__top {
+      grid-template-columns: 1.6fr 1fr 1fr;
+    }
+  }
+
+  .site-footer__brand {
+    display: grid;
+    gap: 20px;
+    align-content: start;
+    max-width: 38ch;
+  }
+
+  .site-footer__brand p {
+    color: var(--text-muted);
+  }
+
+  .site-footer__social {
+    display: flex;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-footer__social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    transition:
+      color 0.2s,
+      border-color 0.2s,
+      background-color 0.2s;
+  }
+
+  .site-footer__social a:hover {
+    color: #fff;
+    border-color: var(--red);
+    background: var(--red);
+  }
+
+  .site-footer__col h2 {
+    margin-bottom: 16px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .site-footer__col ul {
+    display: grid;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-footer__col a {
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .site-footer__col a:hover {
+    color: var(--red);
+  }
+
+  .site-footer__mail {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .site-footer__wordmark {
+    width: 100%;
+    margin-top: clamp(48px, 7vw, 96px);
+    margin-bottom: -0.5%;
+    overflow: visible;
+    user-select: none;
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 32px;
+    padding-block: 24px 32px;
+    border-top: 1px solid var(--line);
+    font-size: 0.875rem;
+    color: var(--text-faint);
+  }
+
+  .site-footer__bottom a {
+    color: var(--text-muted);
+  }
+</style>

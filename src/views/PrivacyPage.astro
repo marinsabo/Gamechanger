@@ -1,0 +1,33 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import PageHero from '@/components/PageHero.astro';
+import { routes, withBase, useTranslations, type Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const entry = await getEntry('pages', `${lang}/privacy`);
+if (!entry) throw new Error(`Missing privacy page for "${lang}"`);
+const { Content } = await render(entry);
+---
+
+<Base
+  lang={lang}
+  title={entry.data.title}
+  description={entry.data.description}
+  current="privacy"
+  alternates={{ hr: withBase(routes.privacy.hr), en: withBase(routes.privacy.en) }}
+>
+  <PageHero kicker={t('privacy.title')} title={entry.data.title} lead={entry.data.description} />
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+</Base>

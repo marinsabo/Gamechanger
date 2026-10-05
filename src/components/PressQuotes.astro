@@ -1,0 +1,110 @@
+---
+import Icon from './Icon.astro';
+import { press } from '@/lib/data';
+import { useTranslations, type Lang } from '@/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="press" data-reveal>
+  <ul class="press__track" tabindex="0" aria-label={t('press.kicker')}>
+    {
+      press.map((item) => (
+        <li class="press__card">
+          <Icon name="quote" size={28} class="press__icon" />
+          <blockquote class="press__quote">{item.quote[lang]}</blockquote>
+          <div class="press__foot">
+            <span class="press__outlet">{item.outlet}</span>
+            {item.url && (
+              <a class="press__link" href={item.url} rel="noopener" target="_blank" aria-label={`${t('press.read')}: ${item.outlet}`}>
+                <Icon name="arrow-up-right" size={18} />
+              </a>
+            )}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .press__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(280px, 360px);
+    gap: 16px;
+    padding: 0 var(--gutter) 12px;
+    margin-inline: calc(var(--gutter) * -1);
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+
+  .press__card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    scroll-snap-align: start;
+  }
+
+  .press__card :global(.press__icon) {
+    color: var(--red);
+  }
+
+  .press__quote {
+    font-size: 1.1875rem;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .press__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 61px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .press__outlet {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+  }
+
+  .press__link {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    color: var(--text-muted);
+    transition:
+      color 0.2s,
+      background-color 0.2s,
+      border-color 0.2s;
+  }
+
+  .press__link:hover {
+    color: #fff;
+    background: var(--red);
+    border-color: var(--red);
+  }
+</style>

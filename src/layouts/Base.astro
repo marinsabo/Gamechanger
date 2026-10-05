@@ -1,0 +1,117 @@
+---
+import '@/styles/global.css';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { locales, useTranslations, withBase, type Lang, type RouteKey } from '@/i18n';
+import ogDefault from '@/assets/og-image.png';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  current?: RouteKey;
+  /** Absolute paths of this page in each language (for hreflang + the language switcher). */
+  alternates: Record<Lang, string>;
+  image?: string;
+  type?: 'website' | 'article';
+  /** For utility pages like 404: no canonical/hreflang, excluded from indexing. */
+  noindex?: boolean;
+}
+
+const { lang, title, description, current, alternates, image, type = 'website', noindex = false } = Astro.props;
+const t = useTranslations(lang);
+
+const siteName = 'Game Changer';
+const fullTitle = title ? `${title} · ${siteName}` : `${siteName} — ${t('site.tagline')}`;
+const desc = description ?? t('site.description');
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image ?? ogDefault.src, Astro.site);
+const abs = (path: string) => new URL(path, Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteName,
+  url: abs(withBase()),
+  logo: abs(withBase('favicon.svg')),
+  email: 'info@gamechanger.hr',
+  sameAs: [
+    'https://www.instagram.com/gamechanger.hr/',
+    'https://www.linkedin.com/company/gamechangerhr/',
+    'https://www.facebook.com/gamechanger.hr/',
+  ],
+};
+---
+
+<!doctype html>
+<html lang={lang} class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    {
+      noindex ? (
+        <meta name="robots" content="noindex" />
+      ) : (
+        <>
+          <link rel="canonical" href={canonical} />
+          <link rel="alternate" hreflang="hr" href={abs(alternates.hr)} />
+          <link rel="alternate" hreflang="en" href={abs(alternates.en)} />
+          <link rel="alternate" hreflang="x-default" href={abs(alternates.hr)} />
+        </>
+      )
+    }
+
+    <meta name="theme-color" content="#08090c" />
+    <link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={withBase('favicon.ico')} sizes="32x32" />
+    <link rel="apple-touch-icon" href={withBase('apple-touch-icon.png')} />
+    <link rel="manifest" href={withBase('site.webmanifest')} />
+    <link rel="sitemap" href={withBase('sitemap-index.xml')} />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title ?? fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={locales[lang].replace('-', '_')} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline>
+      document.documentElement.classList.replace('no-js', 'js');
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t('nav.skip')}</a>
+    <Header lang={lang} current={current} alternates={alternates} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+
+    <script>
+      // Reveal-on-scroll. Elements are visible by default; this only adds motion.
+      const els = document.querySelectorAll<HTMLElement>('[data-reveal]');
+      if ('IntersectionObserver' in window && els.length) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px' },
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

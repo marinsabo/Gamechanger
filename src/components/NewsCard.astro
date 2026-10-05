@@ -1,0 +1,157 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import { newsHref, useTranslations, type Lang } from '@/i18n';
+import { slugOf } from '@/lib/news';
+
+interface Props {
+  entry: CollectionEntry<'news'>;
+  lang: Lang;
+  size?: 'default' | 'large';
+}
+
+const { entry, lang, size = 'default' } = Astro.props;
+const t = useTranslations(lang);
+const { title, description, cover, coverAlt, eventDate, location, category } = entry.data;
+---
+
+<article class:list={['news-card', `news-card--${size}`]} data-reveal>
+  <a class="news-card__link" href={newsHref(lang, slugOf(entry))}>
+    <div class="news-card__media">
+      <Image
+        src={cover}
+        alt={coverAlt}
+        widths={size === 'large' ? [640, 960, 1280] : [480, 720]}
+        sizes={size === 'large' ? '(min-width: 1000px) 60vw, 100vw' : '(min-width: 1000px) 30vw, (min-width: 700px) 45vw, 100vw'}
+      />
+      <span class="tag tag--red news-card__cat">{category}</span>
+    </div>
+    <div class="news-card__body">
+      {
+        (eventDate || location) && (
+          <p class="news-card__meta mono">
+            {eventDate}
+            {eventDate && location && <span aria-hidden="true">/</span>}
+            {location}
+          </p>
+        )
+      }
+      <h3 class="news-card__title">{title}</h3>
+      {size === 'large' && <p class="news-card__desc">{description}</p>}
+      <span class="link-arrow news-card__more">
+        {t('news.read')}
+        <Icon name="arrow-right" />
+      </span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .news-card {
+    height: 100%;
+  }
+
+  .news-card__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      border-color 0.3s,
+      transform 0.4s var(--ease-out);
+  }
+
+  .news-card__link:hover {
+    border-color: rgb(255 45 45 / 0.5);
+    transform: translateY(-4px);
+  }
+
+  .news-card__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--surface-2);
+  }
+
+  .news-card__media :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-out);
+  }
+
+  .news-card__link:hover .news-card__media :global(img) {
+    transform: scale(1.05);
+  }
+
+  .news-card__cat {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgb(8 9 12 / 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .news-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    padding: 24px;
+  }
+
+  .news-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .news-card__title {
+    font-size: 1.375rem;
+    line-height: 1.2;
+  }
+
+  .news-card__desc {
+    color: var(--text-muted);
+  }
+
+  .news-card__more {
+    margin-top: auto;
+    padding-top: 8px;
+    font-size: 0.8125rem;
+  }
+
+  @media (min-width: 900px) {
+    .news-card--large .news-card__link {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+    }
+
+    .news-card--large .news-card__media {
+      aspect-ratio: 16 / 10;
+    }
+
+    .news-card--large .news-card__body {
+      padding: 40px;
+      justify-content: center;
+    }
+
+    .news-card--large .news-card__title {
+      font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+      text-transform: uppercase;
+    }
+  }
+</style>

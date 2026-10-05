@@ -1,0 +1,215 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Icon from '@/components/Icon.astro';
+import NewsCard from '@/components/NewsCard.astro';
+import { getNews, getTranslation, slugOf } from '@/lib/news';
+import { href, newsHref, useTranslations, type Lang } from '@/i18n';
+
+interface Props {
+  entry: CollectionEntry<'news'>;
+  lang: Lang;
+}
+
+const { entry, lang } = Astro.props;
+const t = useTranslations(lang);
+const { Content } = await render(entry);
+const { title, description, cover, coverAlt, eventDate, location, category, gallery } = entry.data;
+
+const other: Lang = lang === 'hr' ? 'en' : 'hr';
+const translation = await getTranslation(entry, other);
+const alternates = {
+  [lang]: newsHref(lang, slugOf(entry)),
+  [other]: translation ? newsHref(other, slugOf(translation)) : href('news', other),
+} as Record<Lang, string>;
+
+const og = await getImage({ src: cover, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+const related = (await getNews(lang)).filter((n) => n.id !== entry.id).slice(0, 3);
+---
+
+<Base lang={lang} title={title} description={description} current="news" alternates={alternates} image={og.src} type="article">
+  <article class="article">
+    <header class="article__head">
+      <div class="container article__head-inner">
+        <a class="link-arrow article__back" href={href('news', lang)}>
+          <Icon name="arrow-left" />
+          {t('news.back')}
+        </a>
+        <div class="article__meta">
+          <span class="tag tag--red">{category}</span>
+          {
+            eventDate && (
+              <span class="mono article__fact">
+                <Icon name="calendar" size={16} />
+                {eventDate}
+              </span>
+            )
+          }
+          {
+            location && (
+              <span class="mono article__fact">
+                <Icon name="pin" size={16} />
+                {location}
+              </span>
+            )
+          }
+        </div>
+        <h1 class="display-2 article__title">{title}</h1>
+        <p class="lead">{description}</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <figure class="article__cover">
+        <Image src={cover} alt={coverAlt} widths={[640, 960, 1280, 1920]} sizes="(min-width: 1320px) 1240px, 100vw" loading="eager" fetchpriority="high" />
+      </figure>
+
+      <div class="article__body prose">
+        <Content />
+      </div>
+
+      {
+        gallery.length > 0 && (
+          <div class="gallery">
+            {gallery.map((g, i) => (
+              <figure class:list={['gallery__item', { 'gallery__item--wide': i % 3 === 0 }]} data-reveal>
+                <Image src={g.src} alt={g.alt} widths={[480, 800, 1200]} sizes="(min-width: 900px) 50vw, 100vw" />
+              </figure>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="section section--raised">
+        <div class="container">
+          <h2 class="display-3 related__title">{t('news.related')}</h2>
+          <div class="related">
+            {related.map((r) => (
+              <NewsCard entry={r} lang={lang} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .article__head {
+    padding-block: clamp(48px, 8vw, 96px) clamp(32px, 5vw, 56px);
+    background: radial-gradient(60% 120% at 90% 0%, rgb(255 45 45 / 0.16), transparent 60%);
+  }
+
+  .article__head-inner {
+    display: grid;
+    gap: 24px;
+    justify-items: start;
+  }
+
+  .article__back {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  .article__back :global(svg) {
+    color: var(--red);
+  }
+
+  .article__back:hover :global(svg) {
+    transform: translateX(-4px);
+  }
+
+  .article__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+  }
+
+  .article__fact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .article__fact :global(svg) {
+    color: var(--red);
+  }
+
+  .article__title {
+    max-width: 22ch;
+  }
+
+  .article__cover {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .article__cover :global(img) {
+    width: 100%;
+    max-height: 640px;
+    object-fit: cover;
+  }
+
+  .article__body {
+    margin: clamp(48px, 7vw, 80px) auto 0;
+  }
+
+  .gallery {
+    display: grid;
+    gap: 12px;
+    margin-top: clamp(48px, 7vw, 80px);
+  }
+
+  @media (min-width: 700px) {
+    .gallery {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery__item--wide {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .gallery__item {
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .gallery__item :global(img) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  .gallery__item--wide :global(img) {
+    aspect-ratio: 21 / 9;
+  }
+
+  .article + .section {
+    margin-top: var(--section-y);
+  }
+
+  .related__title {
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .related {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 16px;
+  }
+</style>
