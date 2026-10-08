@@ -9,9 +9,9 @@
 
 ## Screenshots
 
-![Home page – desktop](assets/screenshots/screenshot-desktop.png "Desktop view")
+![Home page – desktop](docs/screenshots/screenshot-desktop.png "Desktop view")
 
-![Home page – mobile](assets/screenshots/screenshot-mobile.png "Mobile view")
+![Home page – mobile](docs/screenshots/screenshot-mobile.png "Mobile view")
 
 ## Built With
 
